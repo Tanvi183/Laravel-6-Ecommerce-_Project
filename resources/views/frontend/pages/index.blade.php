@@ -180,11 +180,11 @@
                                                 @endif
                                                 <div class="product_name"><div><a href="#">{{ $item->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    <div class="product_color">
+                                                    {{-- <div class="product_color">
                                                         <input type="radio" checked name="product_color" style="background:#b19c83">
                                                         <input type="radio" name="product_color" style="background:#000000">
                                                         <input type="radio" name="product_color" style="background:#999999">
-                                                    </div>
+                                                    </div> --}}
                                                     <button class="product_cart_button">Add to Cart</button>
                                                 </div>
                                             </div>
@@ -232,11 +232,11 @@
                                                 @endif
                                                 <div class="product_name"><div><a href="#">{{ $row->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    <div class="product_color">
+                                                    {{-- <div class="product_color">
                                                         <input type="radio" checked name="product_color" style="background:#b19c83">
                                                         <input type="radio" name="product_color" style="background:#000000">
                                                         <input type="radio" name="product_color" style="background:#999999">
-                                                    </div>
+                                                    </div> --}}
                                                     <button class="product_cart_button">Add to Cart</button>
                                                 </div>
                                             </div>
@@ -284,11 +284,11 @@
                                                 @endif
                                                 <div class="product_name"><div><a href="">{{ $row->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    <div class="product_color">
+                                                    {{-- <div class="product_color">
                                                         <input type="radio" checked name="product_color" style="background:#b19c83">
                                                         <input type="radio" name="product_color" style="background:#000000">
                                                         <input type="radio" name="product_color" style="background:#999999">
-                                                    </div>
+                                                    </div> --}}
                                                     <button class="product_cart_button">Add to Cart</button>
                                                 </div>
                                             </div>

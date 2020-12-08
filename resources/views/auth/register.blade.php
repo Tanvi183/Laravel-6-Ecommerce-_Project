@@ -1,4 +1,4 @@
-@extends('frontend.master')
+{{-- @extends('frontend.master')
 
 @section('main-content')
 
@@ -59,4 +59,4 @@
                 </div>
             </div><!--/ content wrapper -->
         </div><!--/ wrapper -->
-@endsection
+@endsection --}}

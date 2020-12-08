@@ -15,13 +15,13 @@
               <thead>
                 <tr>
                   <th class="wd-5p">ID</th>
-                  <th class="wd-10p">Category Name(En)</th>
-                  <th class="wd-10p">Category Name(Bn)</th>
+                  <th class="wd-5p">Category Name(En)</th>
+                  <th class="wd-5p">Category Name(Bn)</th>
                   <th class="wd-10p">Image</th>
                   <th class="wd-15p">Post Title(En)</th>
                   <th class="wd-15p">Post Title(Bn)</th>
                   <th class="wd-5p">Status</th>
-                  <th class="wd-20p">Action</th>
+                  <th class="wd-40p">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,7 +32,7 @@
                     <td>{{ $row->postcategory->category_name_bn }}</td>
                     <td><img src="{{ url('public/backend/media/post/'.$row->image) }}" height="50px;" width="60px;"></td>
                     <td>{{ Str::limit($row->post_title_en, 30)}}</td>
-                    <td>{{ $row->post_title_bn }}</td>
+                    <td>{{ Str::limit($row->post_title_bn, 30)}}</td>
                     <td>
                         @if($row->status == 1)
                             <span class="badge badge-success">Active</span>

@@ -3,9 +3,11 @@
 <head>
 <title>OneTech</title>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.css') }}">
     <link href="{{ asset('public/frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
@@ -15,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    @stack('css')
 </head>
 
 <body>
@@ -46,18 +49,29 @@
                                     </li>
                                     <li>
                                         <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
+                                        {{-- <ul>
                                             <li><a href="#">EUR Euro</a></li>
                                             <li><a href="#">GBP British Pound</a></li>
                                             <li><a href="#">JPY Japanese Yen</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                 </ul>
                             </div>
                             <div class="top_bar_user">
-                                <div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg') }}" alt=""></div>
-                                <div><a href="{{ route('register') }}">Register</a></div>
-                                <div><a href="{{ route('login') }}">Sign in</a></div>
+                                @guest
+                                    <div><a href="{{ route('login') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg') }}" alt="user icon"></div> SIGNUP / LOGIN</a></div>
+                                @else
+                                    <ul class="standard_dropdown top_bar_dropdown">
+                                        <li>
+                                            <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg') }}" alt="user icon"></div> Profile<i class="fas fa-chevron-down"></i></a>
+                                            <ul>
+                                                <li><a href="#">Wishlist</a></li>
+                                                <li><a href="#">CheckOut</a></li>
+                                                <li><a href="#">Extra</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                @endguest
                             </div>
                         </div>
                     </div>

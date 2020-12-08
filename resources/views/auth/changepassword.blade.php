@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Change Password') }}</div>
+                <div class="card-header text-center">{{ __('Change Password') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}" aria-label="{{ __('Reset Password') }}">
@@ -59,6 +59,21 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="public/frontend/img/img11.jpg" alt="Profile_img" style="height: 100px; width: 100px; border-radius: 50%; margin: 0 auto; margin-top: 10px; margin-bottom: 15px;">
+                <div class="card-body text-center">{{ Auth::user()->name  }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-center"><a href="#">Edit Profile</a></li>
+                  <li class="list-group-item text-center"><a href="{{ route('password.change') }}">Change Password</a></li>
+                  <li class="list-group-item text-center"><a href="#">Settings Profile</a></li>
+                </ul>
+                <div class="card-body">
+                  <a href="{{ route('user.logout') }}" class="btn btn-danger btn-block">Log Out</a>
+                </div>
+            </div>
+        </div>
 </div>
 @endsection
