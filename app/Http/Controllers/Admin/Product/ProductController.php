@@ -68,24 +68,25 @@ class ProductController extends Controller
 
         // Product Store...
         $product = new Product();
-        $product->category_id      = $request->category_id;
-        $product->subcategory_id   = $request->subcategory_id;
-        $product->brand_id         = $request->brand_id;
-        $product->product_name     = $request->product_name;
-        $product->product_code     = $request->product_code;
-        $product->product_quantity = $request->product_quantity;
-        $product->product_details  = $request->product_details;
-        $product->product_colour    = $request->product_colour;
-        $product->product_size     = $request->product_size;
-        $product->selling_price    = $request->selling_price;
-        $product->video_link       = $request->video_link;
-        $product->main_slider      = $request->main_slider;
-        $product->hot_deal         = $request->hot_deal;
-        $product->best_rated       = $request->best_rated;
-        $product->mid_slider       = $request->mid_slider;
-        $product->hot_new          = $request->hot_new;
-        $product->trend           = $request->trend;
-        $product->status           = 1;
+        $product->category_id               = $request->category_id;
+        $product->subcategory_id            = $request->subcategory_id;
+        $product->brand_id                  = $request->brand_id;
+        $product->product_name              = $request->product_name;
+        $product->product_code              = $request->product_code;
+        $product->product_quantity          = $request->product_quantity;
+        $product->product_details           = $request->product_details;
+        $product->product_colour            = $request->product_colour;
+        $product->product_size              = $request->product_size;
+        $product->selling_price             = $request->selling_price;
+        $product->video_link                = $request->video_link;
+        $product->main_slider               = $request->main_slider;
+        $product->hot_deal                  = $request->hot_deal;
+        $product->best_rated                = $request->best_rated;
+        $product->mid_slider                = $request->mid_slider;
+        $product->hot_new                   = $request->hot_new;
+        $product->trend                     = $request->trend;
+        $product->bye_one_get_one           = $request->bye_one_get_one;
+        $product->status                    = 1;
 
         // Image One Upload
         $image_one   = $request->file('image_one');
@@ -194,24 +195,25 @@ class ProductController extends Controller
 
         // Product Update...
         $productUpdate = Product::findorfail($id);
-        $productUpdate->category_id      = $request->category_id;
-        $productUpdate->subcategory_id   = $request->subcategory_id;
-        $productUpdate->brand_id         = $request->brand_id;
-        $productUpdate->product_name     = $request->product_name;
-        $productUpdate->product_code     = $request->product_code;
-        $productUpdate->product_quantity = $request->product_quantity;
-        $productUpdate->product_details  = $request->product_details;
-        $productUpdate->product_colour    = $request->product_colour;
-        $productUpdate->product_size     = $request->product_size;
-        $productUpdate->selling_price    = $request->selling_price;
-        $productUpdate->discount_price   = $request->discount_price;
-        $productUpdate->video_link       = $request->video_link;
-        $productUpdate->main_slider      = $request->main_slider;
-        $productUpdate->hot_deal         = $request->hot_deal;
-        $productUpdate->best_rated       = $request->best_rated;
-        $productUpdate->mid_slider       = $request->mid_slider;
-        $productUpdate->hot_new          = $request->hot_new;
-        $productUpdate->trend           = $request->trend;
+        $productUpdate->category_id                 = $request->category_id;
+        $productUpdate->subcategory_id              = $request->subcategory_id;
+        $productUpdate->brand_id                    = $request->brand_id;
+        $productUpdate->product_name                = $request->product_name;
+        $productUpdate->product_code                = $request->product_code;
+        $productUpdate->product_quantity            = $request->product_quantity;
+        $productUpdate->product_details             = $request->product_details;
+        $productUpdate->product_colour              = $request->product_colour;
+        $productUpdate->product_size                = $request->product_size;
+        $productUpdate->selling_price               = $request->selling_price;
+        $productUpdate->discount_price              = $request->discount_price;
+        $productUpdate->video_link                  = $request->video_link;
+        $productUpdate->main_slider                 = $request->main_slider;
+        $productUpdate->hot_deal                    = $request->hot_deal;
+        $productUpdate->best_rated                  = $request->best_rated;
+        $productUpdate->mid_slider                  = $request->mid_slider;
+        $productUpdate->hot_new                     = $request->hot_new;
+        $productUpdate->trend                       = $request->trend;
+        $productUpdate->bye_one_get_one             = $request->bye_one_get_one;
 
         // Image One Update
         $image_one   = $request->file('image_one');

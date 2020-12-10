@@ -277,12 +277,20 @@
                             <span class="tx-danger" style="font-weight: bold; font-size: 14px;">Hot New</span>
                         </label>
                     </div><!-- col-4 -->
-                     <div class="col-lg-4">
+                    <div class="col-lg-4">
                         <label class="checkbox">
                             <input type="checkbox" name="trend" value="1" <?php if ($productShow->trend == 1) {
                                 echo "checked";
                             } ?>>
                             <span class="tx-danger" style="font-weight: bold; font-size: 14px;">Trend</span>
+                        </label>
+                    </div><!-- col-4 -->
+                    <div class="col-lg-4">
+                        <label class="checkbox">
+                            <input type="checkbox" name="bye_one_get_one" value="1" <?php if ($productShow->bye_one_get_one == 1) {
+                                echo "checked";
+                            } ?>>
+                            <span class="tx-danger" style="font-weight: bold; font-size: 14px;">Bye One Get One</span>
                         </label>
                     </div><!-- col-4 -->
                 </div>

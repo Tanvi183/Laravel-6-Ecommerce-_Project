@@ -168,9 +168,17 @@
                             <span class="badge badge-danger p-1">Inactive</span>
                         @endif
                     </div><!-- col-4 -->
-                     <div class="col-lg-4" style="margin-top: 10px;">
+                    <div class="col-lg-4" style="margin-top: 10px;">
                         <strong><span>Trend | </span></strong>
                         @if($productShow->trend == 1)
+                            <span class="badge badge-success p-1">Active</span>
+                        @else
+                            <span class="badge badge-danger p-1">Inactive</span>
+                        @endif
+                    </div><!-- col-4 -->
+                    <div class="col-lg-4" style="margin-top: 10px;">
+                        <strong><span>Bye One Get One | </span></strong>
+                        @if($productShow->bye_one_get_one == 1)
                             <span class="badge badge-success p-1">Active</span>
                         @else
                             <span class="badge badge-danger p-1">Inactive</span>

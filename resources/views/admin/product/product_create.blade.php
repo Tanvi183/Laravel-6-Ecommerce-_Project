@@ -196,12 +196,19 @@
                             <span>Hot New</span>
                         </label>
                     </div><!-- col-4 -->
-                     <div class="col-lg-4">
+                    <div class="col-lg-4">
                         <label class="checkbox">
                             <input type="checkbox" name="trend" value="1">
                             <span>Trend</span>
                         </label>
                     </div><!-- col-4 -->
+                    <div class="col-lg-4">
+                        <label class="checkbox">
+                            <input type="checkbox" name="bye_one_get_one" value="1">
+                            <span>Bye One Get One</span>
+                        </label>
+                    </div><!-- col-4 -->
+
                 </div>
                 <div class="form-layout-footer" style="float: right;">
                     <button class="btn btn-secondary">Cancel</button>

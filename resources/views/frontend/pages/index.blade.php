@@ -1,7 +1,6 @@
 @extends('frontend.master')
 @section('main-content')
 @include('frontend.includes.menubar')
-
     <div class="characteristics">
         <div class="container">
             <div class="row">
@@ -171,6 +170,7 @@
                                                           @else {{ asset('public/frontend/images/featured_1.png')}} @endif " style="height: 100px; width: 100px;" alt="Product_image">
                                             </div>
                                             <div class="product_content">
+                        {{-- Discount Section --}}
                                                 @if ($item->discount_price == Null)
                                                     <br><span class="text-danger"><b> ${{ $item->selling_price }}</b></span>
                                                 @else
@@ -178,17 +178,19 @@
                                                     ${{ $item->discount_price }}<span>${{ $item->selling_price }}</span>
                                                     </div>
                                                 @endif
+                        {{-- End Discount Section --}}
                                                 <div class="product_name"><div><a href="#">{{ $item->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    {{-- <div class="product_color">
-                                                        <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                        <input type="radio" name="product_color" style="background:#000000">
-                                                        <input type="radio" name="product_color" style="background:#999999">
-                                                    </div> --}}
                                                     <button class="product_cart_button">Add to Cart</button>
                                                 </div>
                                             </div>
-                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                        {{-- Wishlist Section --}}
+                                            <button class="addwishlist" data-id="{{ $item->id }}"> 
+                                                <div class="product_fav">
+                                                    <i class="fa fa-heart text-info"></i>  
+                                                </div>
+                                            </button>
+                        {{-- End Wishlist Section --}}
                                             <ul class="product_marks">
                                                 @if ($item->discount_price == Null)
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -223,6 +225,7 @@
                                                           @else {{ asset('public/frontend/images/featured_1.png')}} @endif " style="height: 120px; width: 140px;" alt="Product_image">
                                             </div>
                                             <div class="product_content">
+                            {{-- Discount Section --}}
                                                 @if ($row->discount_price == Null)
                                                     <br><span class="text-danger"><b> ${{ $row->selling_price }}</b></span>
                                                 @else
@@ -230,17 +233,19 @@
                                                     ${{ $row->discount_price }}<span>${{ $row->selling_price }}</span>
                                                     </div>
                                                 @endif
+                            {{-- Discount Section --}}
                                                 <div class="product_name"><div><a href="#">{{ $row->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    {{-- <div class="product_color">
-                                                        <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                        <input type="radio" name="product_color" style="background:#000000">
-                                                        <input type="radio" name="product_color" style="background:#999999">
-                                                    </div> --}}
                                                     <button class="product_cart_button">Add to Cart</button>
                                                 </div>
                                             </div>
-                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                            {{-- Wishlist Section --}}
+                                            <button class="addwishlist" data-id="{{ $item->id }}"> 
+                                                <div class="product_fav">
+                                                    <i class="fa fa-heart text-info"></i>  
+                                                </div>
+                                            </button>
+                            {{-- End Wishlist Section --}}
                                             <ul class="product_marks">
                                                 @if ($row->discount_price == Null)
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -284,15 +289,16 @@
                                                 @endif
                                                 <div class="product_name"><div><a href="">{{ $row->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    {{-- <div class="product_color">
-                                                        <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                        <input type="radio" name="product_color" style="background:#000000">
-                                                        <input type="radio" name="product_color" style="background:#999999">
-                                                    </div> --}}
                                                     <button class="product_cart_button">Add to Cart</button>
                                                 </div>
                                             </div>
-                                            <div class="product_fav"><i class="fas fa-heart"></i></div>
+                            {{-- Wishlist Section --}}
+                                                <button class="addwishlist" data-id="{{ $item->id }}"> 
+                                                    <div class="product_fav">
+                                                        <i class="fa fa-heart text-info"></i>  
+                                                    </div>
+                                                </button>
+                            {{-- End Wishlist Section --}}
                                             <ul class="product_marks">
                                                 @if ($row->discount_price == Null)
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -2837,4 +2843,47 @@
     </div>
 
 @include('frontend.includes.newslatter')
+
+
+{{-- Wishlist --}}
+<script type="text/javascript">
+    $(document).ready(function() {
+          $('.addwishlist').on('click', function(){  
+            var id = $(this).data('id');
+            if(id) {
+               $.ajax({
+                   url: "{{  url('/add/wishlist/') }}/"+id,
+                   type:"GET",
+                   dataType:"json",
+                   success:function(data) {
+                     const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                      })
+
+                     if($.isEmptyObject(data.error)){
+                          Toast.fire({
+                            type: 'success',
+                            title: data.success
+                          })
+                     }else{
+                           Toast.fire({
+                              type: 'error',
+                              title: data.error
+                          })
+                     }
+
+                   },
+                  
+               });
+           } else {
+               alert('danger');
+           }
+            e.preventDefault();
+       });
+   });
+</script>
+
 @endsection

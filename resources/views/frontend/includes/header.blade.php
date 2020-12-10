@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <title>OneTech</title>
 <meta charset="utf-8">
@@ -16,7 +16,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/slick-1.8.0/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
+    <!------ Ajax ------->
+    <script src="{{ asset('public/frontend/plugins/ajax/jquery.min.js') }}"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- alerts CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <!-- sweetalert2 -->
+    <link href="{{ asset('backend/lib/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
     @stack('css')
 </head>
 

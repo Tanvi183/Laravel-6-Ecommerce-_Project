@@ -1,6 +1,9 @@
 <?php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-//auth & user
+//==================================== Customer Route Here  ==================================================//
+//===========================================================================================================//
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
@@ -8,7 +11,7 @@ Route::post('/password-update', 'HomeController@updatePassword')->name('password
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
 
 //==================================== Admin Route Here ===================================================//
-//==========================================================================================================//
+//========================================================================================================//
 Route::get('admin/home', 'AdminController@index')->name('admin.home');
 Route::get('admin', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
 Route::post('admin', 'Admin\Auth\LoginController@login');
@@ -21,8 +24,8 @@ Route::post('admin-password/email', 'Admin\Auth\ForgotPasswordController@sendRes
 Route::get('admin/reset/password/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 Route::post('admin/update/reset', 'Admin\Auth\ResetPasswordController@reset')->name('admin.reset.update');
 
-//**========================================== Admin Deshboard Route section ===============================================**//
-
+//==================================== Admin Deshboard Route section ==========================================//
+//============================================================================================================//
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'auth:admin'], function () {
         //Categories =======
 Route::resource('category', 'Category\CategoryController');
@@ -61,3 +64,5 @@ Route::get('blogPost/inctive/{id}', 'Blog\PostController@inctive')->name('blogPo
 Route::get('/','FrontendController@index');
         // Newsletter =======
 Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.newsletter');
+        // Wishlist ->name('customer.wishlist')
+Route::get('add/wishlist/{id}', 'Frontend\WishlistController@AddWishlist');

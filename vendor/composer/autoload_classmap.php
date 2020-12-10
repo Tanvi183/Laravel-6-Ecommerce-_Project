@@ -46,6 +46,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\model\\Frontend\\Wishlist' => $baseDir . '/app/model/Frontend/Wishlist.php',
     'App\\model\\admin\\BlogPost' => $baseDir . '/app/model/admin/BlogPost.php',
     'App\\model\\admin\\Brand' => $baseDir . '/app/model/admin/Brand.php',
     'App\\model\\admin\\Category' => $baseDir . '/app/model/admin/Category.php',
