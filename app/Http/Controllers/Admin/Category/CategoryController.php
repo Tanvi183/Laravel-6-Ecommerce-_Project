@@ -38,11 +38,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-        'category_name' => 'required|unique:categories|max:55',
+            'category_name' => 'required|unique:categories|max:64|min:4',
         ]);
         
         $category = new Category();
         $category->category_name = $request->category_name;
+        $category->category_slug = $request->category_name;
         $category->save();
         $notification=array(
                 'messege'=>'Category Add Successfully.!',
@@ -84,11 +85,12 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-        'category_name' => 'required|max:60|string',
+            'category_name' => 'required|unique:categories|max:64|min:4|string',
         ]);
         
         $category = Category::find($id);
-    	$category->category_name = $request->category_name;
+        $category->category_name = $request->category_name;
+        $category->category_slug = $request->category_name;
         $update = $category->save();
         if ($update) {
             $notification=array(

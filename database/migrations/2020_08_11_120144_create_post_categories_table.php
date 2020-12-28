@@ -17,6 +17,7 @@ class CreatePostCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('category_name_en');
             $table->string('category_name_bn');
+            $table->string('slug', 80)->nullable()->uniqid();
             $table->timestamps();
         });
     }

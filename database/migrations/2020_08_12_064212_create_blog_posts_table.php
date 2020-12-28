@@ -15,14 +15,17 @@ class CreateBlogPostsTable extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('post_category_id');
+            $table->unsignedBigInteger('post_category_id');
             $table->string('image')->nullable();
-            $table->string('post_title_en');
-            $table->string('post_title_bn');
+            $table->string('post_title_en', 100);
+            $table->string('post_title_bn', 100);
+            $table->string('slug', 80)->nullable()->uniqid();
             $table->text('post_description_en');
             $table->text('post_description_bn');
-            $table->integer('status')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('post_category_id')->references('id')->on('post_categories');
         });
     }
 

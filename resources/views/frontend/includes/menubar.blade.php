@@ -186,8 +186,10 @@
         <div class="banner_background" style="background-image:url({{ asset('public/frontend/images/banner_background.jpg') }})"></div>
         <div class="container fill_height">
             <div class="row fill_height">
-                <div class="banner_product_image"><img src="@if(isset($main_slide->image_one)){{ asset('public/backend/media/product/'.$main_slide->image_one) }}
-                     @else {{ asset('public/frontend/images/banner_product.png') }} @endif " alt=""></div>
+                <div class="banner_product_image">
+                    <img src="@if(isset($main_slide->image_one)){{ asset('public/backend/media/product/'.$main_slide->image_one) }}
+                     @else {{ asset('public/frontend/images/banner_product.png') }} @endif " alt="">
+                </div>
                 <div class="col-lg-5 offset-lg-4 fill_height">
                     <div class="banner_content">
                         <h1 class="banner_text">@if(isset($main_slide->product_name)){{ $main_slide->product_name }} @else Product Name Null @endif</h1>

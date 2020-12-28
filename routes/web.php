@@ -9,6 +9,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
 Route::post('/password-update', 'HomeController@updatePassword')->name('password.update');
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
+                //======== Sociallite Login Route Here  ===========//
+Route::get('/auth/redirect/{provider}', 'Auth\GoogleController@redirect');
+Route::get('/callback/{provider}', 'GoogleController@callback');
 
 //==================================== Admin Route Here ===================================================//
 //========================================================================================================//
@@ -54,7 +57,6 @@ Route::get('blogPost/Active/{id}', 'Blog\PostController@active')->name('blogPost
         // BlogPost Inactive ....
 Route::get('blogPost/inctive/{id}', 'Blog\PostController@inctive')->name('blogPost.inctive');
 
-
 });
 
 
@@ -64,5 +66,10 @@ Route::get('blogPost/inctive/{id}', 'Blog\PostController@inctive')->name('blogPo
 Route::get('/','FrontendController@index');
         // Newsletter =======
 Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.newsletter');
-        // Wishlist ->name('customer.wishlist')
+        // Wishlist
 Route::get('add/wishlist/{id}', 'Frontend\WishlistController@AddWishlist');
+        //Add to Cart
+Route::get('add/to/card/{id}', 'Frontend\AddCartController@addCart');
+Route::get('check/card', 'Frontend\AddCartController@checkCart');
+        //product Details
+Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');

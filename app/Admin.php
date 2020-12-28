@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\AdminPasswordResetNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
@@ -18,7 +19,10 @@ class Admin extends Authenticatable
 	    }
 
         protected $fillable = [
-            'name', 'email', 'password','phone'
+            'name', 
+            'email', 
+            'password',
+            'phone',
         ];
 
         protected $hidden = [

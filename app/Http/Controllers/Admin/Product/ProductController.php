@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use Image;
+use App\Http\Controllers\Controller;
 use App\model\admin\Brand;
 use App\model\admin\Product;
 use Illuminate\Http\Request;
 use App\model\admin\Category;
 use App\model\admin\Sub_Category;
-use App\Http\Controllers\Controller;
+use Image;
 
 class ProductController extends Controller
 {
@@ -44,7 +44,6 @@ class ProductController extends Controller
         return response()->json($subCategory);
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -55,15 +54,15 @@ class ProductController extends Controller
     {
         // validation...
         $validation = $request->validate([
-            'product_name'     => 'required',
-            'product_code'     => 'required|unique:products',
+            'product_name'         => 'required',
+            'product_code'         => 'required|unique:products',
             'product_quantity'     => 'required',
-            'category_id'         => 'required',
-            'selling_price'         => 'required',
-            'product_details'    => 'required|min:15',
-            'image_one'           => 'image|mimes:jpg,png,jpeg,gif|required',
-            'image_two'           => 'image|mimes:jpg,png,jpeg,gif',
-            'image_three'           => 'image|mimes:jpg,png,jpeg,gif',
+            'category_id'          => 'required',
+            'selling_price'        => 'required',
+            'product_details'      => 'required|min:15',
+            'image_one'            => 'image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|required',
+            'image_two'            => 'image|mimes:jpg,png,jpeg,gif,webp',
+            'image_three'          => 'image|mimes:jpg,png,jpeg,gif,webp',
         ]);
 
         // Product Store...
@@ -72,6 +71,7 @@ class ProductController extends Controller
         $product->subcategory_id            = $request->subcategory_id;
         $product->brand_id                  = $request->brand_id;
         $product->product_name              = $request->product_name;
+        $product->slug                      = $request->product_name;
         $product->product_code              = $request->product_code;
         $product->product_quantity          = $request->product_quantity;
         $product->product_details           = $request->product_details;
@@ -92,6 +92,8 @@ class ProductController extends Controller
         $image_one   = $request->file('image_one');
         $image_two   = $request->file('image_two');
         $image_three = $request->file('image_three');
+
+        // Image One & Two & Three
         if ($image_one && $image_two && $image_three) {
             // Image One Upload...
             $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
@@ -101,10 +103,42 @@ class ProductController extends Controller
             $image_two_name = hexdec(uniqid()) . '.' . $image_two->getClientOriginalExtension();
             Image::make($image_two)->resize(230, 300)->save('public/backend/media/product/' . $image_two_name);
             $product->image_two = $image_two_name;
-            // Image Three Upload...
-            $image_three_name = hexdec(uniqid()) . '.' . $image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize(230, 300)->save('public/backend/media/product/' . $image_three_name);
-            $product->image_three = $image_three_name;
+            // Image One Upload...
+            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
+            $product->image_one = $image_one_name;
+            $product->save();
+        }
+        // Image One & Two
+        if ($image_one && $image_two) {
+            // Image One Upload...
+            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
+            $product->image_one = $image_one_name;
+            // Image Two Upload...
+            $image_two_name = hexdec(uniqid()) . '.' . $image_two->getClientOriginalExtension();
+            Image::make($image_two)->resize(230, 300)->save('public/backend/media/product/' . $image_two_name);
+            $product->image_two = $image_two_name;
+            $product->save();
+        }       
+        // Image One & Three 
+        if ($image_one && $image_three) {
+            // Image One Upload...
+            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
+            $product->image_one = $image_one_name;
+            // Image One Upload...
+            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
+            $product->image_one = $image_one_name;
+            $product->save();
+        }       
+        // image One
+        if (isset($image_one)) {
+            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
+            $product->image_one = $image_one_name;
+            $product->save();
         }
         // Save Product Data...
         $product->save();
@@ -182,15 +216,15 @@ class ProductController extends Controller
     {
         // validation...
         $validation = $request->validate([
-            'product_name'     => 'required',
-            'product_code'     => 'required',
-            'product_quantity'     => 'required',
-            'category_id'         => 'required',
-            'selling_price'         => 'required',
+            'product_name'       => 'required',
+            'product_code'       => 'required',
+            'product_quantity'   => 'required',
+            'category_id'        => 'required',
+            'selling_price'      => 'required',
             'product_details'    => 'required|min:15',
-            'image_one'           => 'image|mimes:jpg,png,jpeg,gif',
-            'image_two'           => 'image|mimes:jpg,png,jpeg,gif',
-            'image_three'           => 'image|mimes:jpg,png,jpeg,gif',
+            'image_one'          => 'image|mimes:jpg,png,jpeg,gif',
+            'image_two'          => 'image|mimes:jpg,png,jpeg,gif',
+            'image_three'        => 'image|mimes:jpg,png,jpeg,gif',
         ]);
 
         // Product Update...
@@ -337,7 +371,7 @@ class ProductController extends Controller
             // Redirect.
             return Redirect()->route('admin.product.index')->with($notification);
         }
-                // Save Product Update Data...
+        // Save Product Update Data...
         if ($productUpdate) {
             $productUpdate->save();
             // Notification...

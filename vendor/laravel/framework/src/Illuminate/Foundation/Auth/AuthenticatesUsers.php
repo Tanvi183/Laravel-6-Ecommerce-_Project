@@ -145,7 +145,6 @@ trait AuthenticatesUsers
     public function username()
     {
         return 'email';
-        return 'phone';
     }
 
     /**
@@ -159,6 +158,8 @@ trait AuthenticatesUsers
         $this->guard()->logout();
 
         $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         return $this->loggedOut($request) ?: redirect('/');
     }

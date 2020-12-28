@@ -47,6 +47,7 @@ class SubCategoryController extends Controller
         $subcategory = new Sub_Category();
         $subcategory->category_id = $request->category_id;
         $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->subcategory_slug = $request->subcategory_name;
         $subcategory->save();
         $notification=array(
                 'messege'=>'Sub Category Add Successfully.!',
@@ -96,6 +97,7 @@ class SubCategoryController extends Controller
         $subcategory = Sub_Category::find($id);
         $subcategory->category_id = $request->category_id;
         $subcategory->subcategory_name = $request->subcategory_name;
+        $subcategory->subcategory_slug = $request->subcategory_name;
         $update = $subcategory->save();
         if ($update) {
             $notification=array(

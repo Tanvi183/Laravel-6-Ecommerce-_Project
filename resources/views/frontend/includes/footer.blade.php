@@ -115,8 +115,9 @@
     <script src="{{ asset('public/frontend/plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ asset('public/frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('public/frontend/js/custom.js') }}"></script>
-    
-    <script src="{{ asset('public/frontend/plugins/sweetalert2/sweetalert2@8.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    {{-- <script src="{{ asset('public/frontend/plugins/sweetalert2/sweetalert2@8.js') }}"></script> --}}
 
 <!---- START: Toaster --->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

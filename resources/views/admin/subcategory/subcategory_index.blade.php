@@ -29,8 +29,8 @@
                 @foreach ($sub_category as $key => $row)
                 <tr>
                   <td>{{ $key+1 }}</td>
-                  <td>{{ $row->category->category_name }}</td>
-                  <td>{{ $row->subcategory_name }}</td>
+                  <td>{{ $row->category->category_name ?? ''}}</td>
+                  <td>{{ $row->subcategory_name ?? ''}}</td>
                   <td>
                     <a href="{{ route('admin.subcategory.edit', $row->id) }}" class="btn btn-sm btn-info" title="Edit"><i class="fa fa-edit"></i></a>
                     <button type="button" class="btn btn-sm btn-danger" title="Delete">

@@ -2,10 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <title>OneTech</title>
+<meta name="csrf" value="{{ csrf_token() }}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSRF Token -->
-<meta name="csrf-token" content="{{ csrf_token() }}">
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.css') }}">
@@ -17,13 +18,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
     <!------ Ajax ------->
-    <script src="{{ asset('public/frontend/plugins/ajax/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('public/frontend/plugins/ajax/jquery.min.js') }}"></script> --}}
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- alerts CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- sweetalert2 -->
-    <link href="{{ asset('backend/lib/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="sweetalert2.min.css">
     @stack('css')
 </head>
 
@@ -129,11 +130,18 @@
                     <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                         <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                                <div class="wishlist_icon"><img src="{{ asset('public/frontend/images/heart.png') }}" alt=""></div>
-                                <div class="wishlist_content">
-                                    <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                    <div class="wishlist_count">12</div>
-                                </div>
+                                @guest
+                                @else
+                                @php
+                                    $userid = Auth::id();
+                                    $wishlist = DB::table('wishlists')->where('user_id', $userid)->get();    
+                                @endphp
+                                    <div class="wishlist_icon"><img src="{{ asset('public/frontend/images/heart.png') }}" alt=""></div>
+                                    <div class="wishlist_content">
+                                        <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                        <div class="wishlist_count">{{ count($wishlist) }}</div>
+                                    </div>
+                                @endguest
                             </div>
 
                             <!-- Cart -->
@@ -141,7 +149,7 @@
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
                                         <img src="{{ asset('public/frontend/images/cart.png') }}" alt="">
-                                        <div class="cart_count"><span>10</span></div>
+                                        <div class="cart_count"><span>{{ Cart::count() }}</span></div>
                                     </div>
                                     <div class="cart_content">
                                         <div class="cart_text"><a href="#">Cart</a></div>

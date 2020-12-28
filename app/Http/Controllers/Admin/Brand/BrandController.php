@@ -38,12 +38,13 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-        'brand_name' => 'required|unique:brands|max:55',
-        'brand_logo' => 'required|mimes:jpeg,bmp,png',
+            'brand_name' => 'required|unique:brands|max:80',
+            'brand_logo' => 'required|mimes:jpeg,bmp,png',
         ]);
         
         $brands = new Brand();
         $brands->brand_name = $request->brand_name;
+        $brands->brand_slug = $request->brand_name;
         if ($request->file('brand_logo')) {
             $file = $request->file('brand_logo');
             $filename = date('YmdHi').$file->getClientOriginalName();
@@ -98,12 +99,13 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-        'brand_name' => 'required|max:60|string',
-        'brand_logo' => 'mimes:jpeg,bmp,png',
+            'brand_name' => 'required|max:60|unique:brands|string',
+            'brand_logo' => 'mimes:jpeg,bmp,png',
         ]);
         
         $brands = Brand::findorfail($id);
         $brands->brand_name = $request->brand_name;
+        $brands->brand_slug = $request->brand_name;
         if ($request->file('brand_logo')) {
             $file = $request->file('brand_logo');
             @unlink(public_path('backend/media/brands/'.$brands->brand_logo));

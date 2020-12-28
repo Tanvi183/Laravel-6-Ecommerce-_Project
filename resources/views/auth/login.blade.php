@@ -42,7 +42,7 @@
 						</form><br><br>
 
                         <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-facebook" aria-hidden="true" style="letter-spacing: 10px"></i>Log In With Facebook</button><br>
-                        <button type="submit" class="btn btn-block btn-danger"><i class="fa fa-google" aria-hidden="true" style="letter-spacing: 10px"></i>Log In With Google</button>
+                        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-block btn-danger"><i class="fa fa-google" aria-hidden="true" style="letter-spacing: 10px"></i>Log In With Google</a>
 					</div>
                 </div>
 
