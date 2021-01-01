@@ -26,7 +26,7 @@ class FrontendController extends Controller
         //Mid Slider
         $mid_slider         = Product::where('mid_slider', 1)->where('status', 1)->orderBy('id', 'desc')->take(6)->get();
         //Discont product
-        $discout_product    = Product::where('status', 1)->whereNotNull('discount_price')->orderBy('id', 'DESC')->first();
+        // $discout_product    = Product::where('status', 1)->whereNotNull('discount_price')->orderBy('id', 'DESC')->first();
         // Electronict category Product.. 
         $elec_cat = Category::skip(5)->first();
         $elec_id = $elec_cat->id;
@@ -44,10 +44,9 @@ class FrontendController extends Controller
         //Bye One Get One
         $ByeGet         = Product::where('bye_one_get_one', 1)->where('status', 1)->orderBy('id', 'desc')->limit(24)->get();
         
-        return view('frontend.pages.index',compact('main_slide', 'featured', 'trends', 'best_rated', 'hot_deal', 'category', 'mid_slider', 
-            'discout_product', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet',
+        return view('frontend.pages.index',compact('main_slide', 'hot_deal', 'featured', 'trends', 'best_rated',
+            'category', 'mid_slider', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet'
         ));
     }
 
 }
-

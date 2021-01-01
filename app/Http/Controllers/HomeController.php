@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.layouts.home');
+        return view('frontend.users.home');
     }
 
     public function changePassword(){

@@ -26,11 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('frontend.includes.menubar', function($view){
+        View::composer('frontend.includes.main_header', function($view){
             $categories = Category::all();
             $view->with('categories',$categories);
         });
-        View::composer('frontend.includes.header', function($view){
+        View::composer('frontend.includes.category_menu', function($view){
             $categories = Category::all();
             $view->with('categories',$categories);
         });

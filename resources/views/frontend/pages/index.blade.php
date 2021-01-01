@@ -1,7 +1,42 @@
-@extends('frontend.master')
-@section('main-content')
-@include('frontend.includes.menubar')
+@extends('frontend.app')
+@section('category_menu')
+    @include('frontend.includes.category_menu')
+@endsection
+
+@section('content')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <!-- Banner -->
+
+    <div class="banner">
+        <div class="banner_background" style="background-image:url({{ asset('public/frontend/images/banner_background.jpg') }})"></div>
+        <div class="container fill_height">
+            <div class="row fill_height">
+                <div class="banner_product_image">
+                    <img src="@if(isset($main_slide->image_one)){{ asset('public/backend/media/product/'.$main_slide->image_one) }}
+                     @else {{ asset('public/frontend/images/banner_product.png') }} @endif " alt="">
+                </div>
+                <div class="col-lg-5 offset-lg-4 fill_height">
+                    <div class="banner_content">
+                        <h1 class="banner_text">@if(isset($main_slide->product_name)){{ $main_slide->product_name }} @else Product Name Null @endif</h1>
+                        <div class="banner_price">
+                            @if(isset($main_slide->selling_price))
+                                @if ($main_slide->discount_price == Null)
+                                <h2>${{ $main_slide->selling_price }}</h2>
+                                @else
+                                <span>${{ $main_slide->selling_price }} </span>${{ $main_slide->discount_price }}
+                                @endif
+                            @else Product Price Null @endif
+                        </div>
+                        <div class="banner_product_name">{{ $main_slide->brand->brand_name ?? ''}}</div>
+                        <div class="button banner_button"><a href="#">Shop Now</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- Characteristics -->
 
     <div class="characteristics">
         <div class="container">
@@ -609,7 +644,7 @@
                                                 <div class="arrivals_single_name"><a href="#">{{ $discout_product->product_name ?? ''}}</a></div><br>
                                                 <div class="arrivals_single_price text-right">
                                                     <div class="product_price discount">
-                                                        ${{ $discout_product->discount_price }}<span>${{ $discout_product->selling_price }}</span>
+                                                        ${{ $discout_product->discount_price ?? ''}}<span>${{ $discout_product->selling_price  ?? ''}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -620,12 +655,12 @@
                                             <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
                                         </a>
                                         <ul class="arrivals_single_marks product_marks">
-                                            @if ($discout_product->discount_price == Null)
+                                            @if ($main_slide->discount_price == Null )
                                                 <li class="product_mark product_discount" style="background: green;">New</li>
                                             @else
                                                  @php
-                                                    $amount = $discout_product->selling_price - $discout_product->discount_price;
-                                                    $discount = $amount / $discout_product->selling_price * 100;
+                                                    $amount = $main_slide->selling_price - $main_slide->discount_price;
+                                                    $discount = $amount / $main_slide->selling_price * 100;
                                                 @endphp
                                                 <li class="product_mark product_discount">
                                                     {{ intval($discount) }}%
@@ -643,7 +678,7 @@
         </div>      
     </div>
 
-    <!-- Best Sellers -->
+	<!-- Best Sellers -->
 
     <div class="best_sellers">
 		<div class="container">
@@ -1341,7 +1376,7 @@
 		</div>
 	</div>
 
-    <!-- Adverts -->
+	<!-- Adverts -->
 
     <div class="adverts">
         <div class="container">
@@ -1707,6 +1742,7 @@
         </div>
     </div>
 
+
     <!-- Brands -->
 
     <div class="brands">
@@ -1734,95 +1770,93 @@
             </div>
         </div>
     </div>
-
-@include('frontend.includes.newslatter')
-
+    
 @endsection
 
 @push('js')
-
+    
+    <!---- Wishlish Ajax request ---->
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+              $('.addwishlist').on('click', function(){  
+                var id = $(this).data('id');
+                if(id) {
+                   $.ajax({
+                       url: "{{  url('/add/wishlist/') }}/"+id,
+                       type:"GET",
+                       dataType:"json",
+                       success:function(data) {
+                         const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                          })
+    
+                         if($.isEmptyObject(data.error)){
+                              Toast.fire({
+                                type: 'success',
+                                title: data.success
+                              })
+                         }else{
+                               Toast.fire({
+                                  type: 'error',
+                                  title: data.error
+                              })
+                         }
+    
+                       },
+                      
+                   });
+               } else {
+                   alert('danger');
+               }
+                e.preventDefault();
+           });
+       });
+    </script>
+    
     <!---- Add to card Ajax request ---->
 
     <script type="text/javascript">
-        $(document).ready(function() {
-          $('.addcart').on('click', function(){  
-            var id = $(this).data('id');
-            if(id) {
-               $.ajax({
-                   url: "{{  url('/add/to/card/') }}/"+id,
-                   type:"GET",
-                   dataType:"json",
-                   success:function(data) {
-                     const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                      })
-
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
-                            type: 'success',
-                            title: data.success
+            $(document).ready(function() {
+              $('.addcart').on('click', function(){  
+                var id = $(this).data('id');
+                if(id) {
+                   $.ajax({
+                       url: "{{  url('/add/to/card/') }}/"+id,
+                       type:"GET",
+                       dataType:"json",
+                       success:function(data) {
+                         const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
                           })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
-
-                   },
-                  
-               });
-           } else {
-               alert('danger');
-           }
-            e.preventDefault();
+    
+                         if($.isEmptyObject(data.error)){
+                              Toast.fire({
+                                type: 'success',
+                                title: data.success
+                              })
+                         }else{
+                               Toast.fire({
+                                  type: 'error',
+                                  title: data.error
+                              })
+                         }
+    
+                       },
+                      
+                   });
+               } else {
+                   alert('danger');
+               }
+                e.preventDefault();
+           });
        });
-   });
-</script>
+    </script>
 
-
-<!---- Wishlish Ajax request ---->
-
-<script type="text/javascript">
-    $(document).ready(function() {
-          $('.addwishlist').on('click', function(){  
-            var id = $(this).data('id');
-            if(id) {
-               $.ajax({
-                   url: "{{  url('/add/wishlist/') }}/"+id,
-                   type:"GET",
-                   dataType:"json",
-                   success:function(data) {
-                     const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                      })
-
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
-                            type: 'success',
-                            title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
-
-                   },
-                  
-               });
-           } else {
-               alert('danger');
-           }
-            e.preventDefault();
-       });
-   });
-</script>
 @endpush

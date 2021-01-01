@@ -1,11 +1,12 @@
-@extends('frontend.master')
+@extends('frontend.app')
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/contact_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/contact_responsive.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @endpush
 
-@section('main-content')
+@section('content')
+
 	<div class="contact_form">
 		<div class="container">
 			<div class="row">
@@ -103,8 +104,10 @@
 		</div>
 		<div class="panel"></div>
     </div>
-
-<script type="text/javascript" src="{{ asset('public/frontend/js/contact_custom.js') }}"></script>
+    
 @endsection
 
+@push('js')
+    <script type="text/javascript" src="{{ asset('public/frontend/js/contact_custom.js') }}"></script>
+@endpush
 

@@ -71,5 +71,6 @@ Route::get('add/wishlist/{id}', 'Frontend\WishlistController@AddWishlist');
         //Add to Cart
 Route::get('add/to/card/{id}', 'Frontend\AddCartController@addCart');
 Route::get('check/card', 'Frontend\AddCartController@checkCart');
+Route::post('add/cart/product', 'Frontend\ProductController@addCart')->name('add.to.cart');
         //product Details
 Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');

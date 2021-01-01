@@ -1,5 +1,6 @@
-@extends('frontend.master')
-@section('main-content')
+@extends('frontend.app')
+@section('content')
+
     <div class="contact_form">
         <div class="container">
             <div class="row">
@@ -41,4 +42,5 @@
             </div>
         </div>
     </div>
+    
 @endsection
