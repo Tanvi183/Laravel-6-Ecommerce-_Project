@@ -39,7 +39,7 @@ class BrandController extends Controller
     {
         $validatedData = $request->validate([
             'brand_name' => 'required|unique:brands|max:80',
-            'brand_logo' => 'required|mimes:jpeg,bmp,png',
+            'brand_logo' => 'mimes:jpeg,bmp,png',
         ]);
         
         $brands = new Brand();

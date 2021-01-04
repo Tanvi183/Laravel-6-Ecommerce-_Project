@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\model\admin\Product;
 use Illuminate\Http\Request;
-use Cart;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+// use Cart;
+use Response;
 
 class ProductController extends Controller
 {
@@ -21,44 +23,34 @@ class ProductController extends Controller
         
        return view('frontend.pages.product_details', compact('product', 'product_color', 'product_size'));
     }
-    public function addCart(Request $request)
+
+    public function productView($id)
     {
-        $product = Product::findorfail($request->product_id);
-        // Card Add
-        $data                     = array();
-        if ($product->discount_price == null) {
-            $data['id']               = $product->id;
-            $data['name']             = $product->product_name;
-            $data['qty']              = $request->qty;
-            $data['price']            = $product->selling_price;
-            $data['weight']           = 1;
-            $data['options']['image'] = $product->image_one;
-            $data['options']['color'] = $request->color;
-            $data['options']['size']  = $request->size;
-            Cart::add($data);
+        $product    = Product::where('id', $id)->where('status', 1)->first();
+        $cat = $product->category;
+        $subcat = $product->subcategory;
+        $bnd = $product->brand;
 
-            $notification=array(
-                'messege'=>'Add To Cart Successfully.!',
-                'alert-type'=>'success'
-            );
-            return Redirect()->to('/')->with($notification);
-        } else {
-            $data['id']               = $product->id;
-            $data['name']             = $product->product_name;
-            $data['qty']              = $request->qty;
-            $data['price']            = $product->discount_price;
-            $data['weight']           = 1;
-            $data['options']['image'] = $product->image_one;
-            $data['options']['color'] = $request->color;
-            $data['options']['size']  = $request->size;
-            Cart::add($data);
+        // $product = DB::table('products')
+        //     ->join('categories', 'products.category_id', 'categories.id')
+        //     ->join('sub__categories', 'products.subcategory_id', 'sub__categories.id')
+        //     ->join('brands', 'products.brand_id', 'brands.id')
+        //     ->select('products.*', 'categories.category_name', 'sub__categories.subcategory_name', 'brands.brand_name')
+        //     ->where('products.id', $id)->where('status', 1)->first();
 
-            $notification=array(
-                'messege'=>'Add To Cart Successfully.!',
-                'alert-type'=>'success'
-            );
-            return Redirect()->to('/')->with($notification);
-        }
-                    
+        $color = explode(',', $product->product_colour);
+        $size  = explode(',', $product->product_size);
+
+        // return response()->json($product);
+
+        return response()->json(array(
+                'product' => $product,
+                'cat'     => $cat,
+                'subcat'     => $subcat,
+                'bnd'     => $bnd,
+                'color'   => $color,
+                'size'    => $size,
+            ));
     }
+
 }

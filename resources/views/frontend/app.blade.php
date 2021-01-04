@@ -1,12 +1,11 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>OneTech</title>
+    <meta name="csrf" value="{{ csrf_token() }}">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="OneTech Online shop">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="OneTech shop project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Link -->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.css') }}">
@@ -17,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/slick-1.8.0/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/styles/product_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/styles/product_responsive.css') }}"> --}}
     <!---- Ajax ----->
     <script src="{{ asset('public/frontend/plugins/ajax/jquery.min.js') }}"></script>
     <!-- Font Awesome -->
@@ -25,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
     @stack('css')
 </head>
 
@@ -69,7 +71,7 @@
 
     <!--- Js Link ---->
     
-    <script src="{{ asset('public/frontend/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('/public/frontend/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('public/frontend/styles/bootstrap4/popper.js') }}"></script>
     <script src="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('public/frontend/plugins/greensock/TweenMax.min.js') }}"></script>
@@ -81,6 +83,7 @@
     <script src="{{ asset('public/frontend/plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ asset('public/frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('public/frontend/js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('public/frontend/js/product_custom.js') }}"></script> --}}
     <!--- Notify js Start --->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- Sweet-Alert  -->

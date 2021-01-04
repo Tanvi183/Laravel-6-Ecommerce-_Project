@@ -6,6 +6,7 @@ use App\model\admin\Brand;
 use App\model\admin\Product;
 use Illuminate\Http\Request;
 use App\model\admin\Category;
+use phpDocumentor\Reflection\Types\Null_;
 
 class FrontendController extends Controller
 {
@@ -26,7 +27,7 @@ class FrontendController extends Controller
         //Mid Slider
         $mid_slider         = Product::where('mid_slider', 1)->where('status', 1)->orderBy('id', 'desc')->take(6)->get();
         //Discont product
-        // $discout_product    = Product::where('status', 1)->whereNotNull('discount_price')->orderBy('id', 'DESC')->first();
+        $discout_product    = Product::where('status', 1)->whereNotNull('discount_price')->orderBy('id', 'DESC')->first();
         // Electronict category Product.. 
         $elec_cat = Category::skip(5)->first();
         $elec_id = $elec_cat->id;
@@ -45,7 +46,7 @@ class FrontendController extends Controller
         $ByeGet         = Product::where('bye_one_get_one', 1)->where('status', 1)->orderBy('id', 'desc')->limit(24)->get();
         
         return view('frontend.pages.index',compact('main_slide', 'hot_deal', 'featured', 'trends', 'best_rated',
-            'category', 'mid_slider', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet'
+            'category', 'mid_slider', 'discout_product', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet'
         ));
     }
 

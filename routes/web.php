@@ -68,9 +68,16 @@ Route::get('/','FrontendController@index');
 Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.newsletter');
         // Wishlist
 Route::get('add/wishlist/{id}', 'Frontend\WishlistController@AddWishlist');
-        //Add to Cart
-Route::get('add/to/card/{id}', 'Frontend\AddCartController@addCart');
-Route::get('check/card', 'Frontend\AddCartController@checkCart');
-Route::post('add/cart/product', 'Frontend\ProductController@addCart')->name('add.to.cart');
+
+//============================= Add To Cart Route Here  =====================================//
+
+Route::get('add/to/card/{id}', 'Frontend\AddCartController@addtoCart'); //Ajax
+Route::post('add/cart/product', 'Frontend\AddCartController@addCart')->name('add.to.cart'); //Page Load
+Route::get('show/cart', 'Frontend\AddCartController@showCart')->name('show.cart'); //show Cart
+Route::get('/cart/product/remove/{rowId}', 'Frontend\AddCartController@removeCart')->name('cart.product.remove'); //Remove Cart
+Route::post('/cart/product/update/{id}', 'Frontend\AddCartController@updateCart')->name('cart.product.update');
+Route::post('insert/prodcut/cart', 'Frontend\AddCartController@insertCart')->name('product.cart.insert');
+
         //product Details
 Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');
+Route::get('cart/product/view/{id}','Frontend\ProductController@productView');    //Product view

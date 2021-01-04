@@ -1,13 +1,14 @@
 @extends('frontend.app')
+
+@section('content')
+
 @section('category_menu')
     @include('frontend.includes.category_menu')
 @endsection
 
-@section('content')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!-- Banner -->
-
     <div class="banner">
         <div class="banner_background" style="background-image:url({{ asset('public/frontend/images/banner_background.jpg') }})"></div>
         <div class="container fill_height">
@@ -35,7 +36,6 @@
             </div>
         </div>
     </div>
-
 	<!-- Characteristics -->
 
     <div class="characteristics">
@@ -131,7 +131,7 @@
                                             </div>
                                         </div>
                                         <div class="deals_info_line d-flex flex-row justify-content-start">
-                                            <div class="deals_item_name">{{ $item->product_name }}</div>
+                                            <div class="deals_item_name"><a href="{{ url('/product/details/'.$item->product_code.'/'.$item->product_name) }}">{{ $item->product_name }}</a></div>
                                             <div class="deals_item_price ml-auto">
                                                 @if ($item->discount_price == Null)
                                                     ${{ $item->selling_price }}
@@ -207,7 +207,7 @@
                                                           @else {{ asset('public/frontend/images/featured_1.png')}} @endif " style="height: 100px; width: 100px;" alt="Product_image">
                                             </div>
                                             <div class="product_content">
-                        {{-- Discount Section --}}
+                                    <!-- Discount Section -->
                                                 @if ($item->discount_price == Null)
                                                     <br><span class="text-danger"><b> ${{ $item->selling_price }}</b></span>
                                                 @else
@@ -215,19 +215,22 @@
                                                     ${{ $item->discount_price }}<span>${{ $item->selling_price }}</span>
                                                     </div>
                                                 @endif
-                        {{-- End Discount Section --}}
+                                    <!-- End Discount Section -->
                                                 <div class="product_name"><div><a href="{{ url('/product/details/'.$item->product_code.'/'.$item->product_name) }}">{{ $item->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button>
+                                                    {{-- <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}} <!--add to cart-->
+                                                    <button id="{{ $item->id }}" class="product_cart_button addcart" data-toggle="modal" 
+                                                        data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                    </button>
                                                 </div>
                                             </div>
-                        {{-- Wishlist Section --}}
+                                    <!-- Wishlist Section -->
                                             <button class="addwishlist" data-id="{{ $item->id }}"> 
                                                 <div class="product_fav">
                                                     <i class="fa fa-heart text-info"></i>  
                                                 </div>
                                             </button>
-                        {{-- End Wishlist Section --}}
+                                    <!-- End Wishlist Section -->
                                             <ul class="product_marks">
                                                 @if ($item->discount_price == Null)
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -262,7 +265,7 @@
                                                           @else {{ asset('public/frontend/images/featured_1.png')}} @endif " style="height: 120px; width: 140px;" alt="Product_image">
                                             </div>
                                             <div class="product_content">
-                            {{-- Discount Section --}}
+                                    {{-- Discount Section --}}
                                                 @if ($row->discount_price == Null)
                                                     <br><span class="text-danger"><b> ${{ $row->selling_price }}</b></span>
                                                 @else
@@ -270,19 +273,22 @@
                                                     ${{ $row->discount_price }}<span>${{ $row->selling_price }}</span>
                                                     </div>
                                                 @endif
-                            {{-- Discount Section --}}
-                                                <div class="product_name"><div><a href="#">{{ $row->product_name }}</a></div></div>
+                                    {{-- Discount Section --}}
+                                                <div class="product_name"><div><a href="{{ url('/product/details/'.$row->product_code.'/'.$row->product_name) }}">{{ $row->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button>
+                                                     {{-- <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}} <!--add to cart-->
+                                                     <button id="{{ $row->id }}" class="product_cart_button addcart" data-toggle="modal" 
+                                                        data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                    </button>
                                                 </div>
                                             </div>
-                            {{-- Wishlist Section --}}
+                                    {{-- Wishlist Section --}}
                                             <button class="addwishlist" data-id="{{ $row->id }}"> 
                                                 <div class="product_fav">
                                                     <i class="fa fa-heart text-info"></i>  
                                                 </div>
                                             </button>
-                            {{-- End Wishlist Section --}}
+                                    {{-- End Wishlist Section --}}
                                             <ul class="product_marks">
                                                 @if ($row->discount_price == Null)
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -324,18 +330,21 @@
                                                     ${{ $row->discount_price }}<span>${{ $row->selling_price }}</span>
                                                     </div>
                                                 @endif
-                                                <div class="product_name"><div><a href="">{{ $row->product_name }}</a></div></div>
+                                                <div class="product_name"><div><a href="{{ url('/product/details/'.$row->product_code.'/'.$row->product_name) }}">{{ $row->product_name }}</a></div></div>
                                                 <div class="product_extras">
-                                                    <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button>
+                                                     {{-- <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}} <!--add to cart-->
+                                                     <button id="{{ $row->id }}" class="product_cart_button addcart" data-toggle="modal" 
+                                                        data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                    </button>
                                                 </div>
                                             </div>
-                            {{-- Wishlist Section --}}
+                                    {{-- Wishlist Section --}}
                                                 <button class="addwishlist" data-id="{{ $row->id }}">
                                                     <div class="product_fav">
                                                         <i class="fa fa-heart text-info"></i>  
                                                     </div>
                                                 </button>
-                            {{-- End Wishlist Section --}}
+                                    {{-- End Wishlist Section --}}
                                             <ul class="product_marks">
                                                 @if ($row->discount_price == Null)
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -475,7 +484,7 @@
                                             <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                                 <div class="product_image d-flex flex-column align-items-center justify-content-center">
                                                     <img src="@if(isset($item->image_one)){{ asset('public/backend/media/product/'.$item->image_one) }}
-                                                              @else {{ asset('public/frontend/images')}} @endif " style="height: 100px; width: 100px;" alt="Product_image">
+                                                              @else {{ asset('public/frontend/images')}} @endif " style="height: 100px; width: 80px;" alt="Product_image">
                                                 </div>
                                                 <div class="product_content">
                                         <!-- Discount Section -->
@@ -489,7 +498,10 @@
                                         <!--End Discount Section -->
                                                     <div class="product_name"><div><a href="#">{{ $item->product_name }}</a></div></div>
                                                     <div class="product_extras">
-                                                        <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button>
+                                                        {{-- <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}} <!--add to cart-->
+                                                        <button id="{{ $item->id }}" class="product_cart_button addcart" data-toggle="modal" 
+                                                            data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                        </button>
                                                     </div>
                                                 </div>
                                         <!--Wishlist Section -->
@@ -545,7 +557,10 @@
                                         <!--End Discount Section -->
                                                     <div class="product_name"><div><a href="#">{{ $item->product_name }}</a></div></div>
                                                     <div class="product_extras">
-                                                        <button class="product_cart_button">Add to Cart</button>
+                                                        {{-- <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}} <!--add to cart-->
+                                                        <button id="{{ $item->id }}" class="product_cart_button addcart" data-toggle="modal" 
+                                                            data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                        </button>
                                                     </div>
                                                 </div>
                                         <!--Wishlist Section -->
@@ -600,7 +615,10 @@
                                         <!--End Discount Section -->
                                                     <div class="product_name"><div><a href="#">{{ $item->product_name }}</a></div></div>
                                                     <div class="product_extras">
-                                                        <button class="product_cart_button">Add to Cart</button>
+                                                        {{-- <button class="product_cart_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}} <!--add to cart-->
+                                                        <button id="{{ $item->id }}" class="product_cart_button addcart" data-toggle="modal" 
+                                                            data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                        </button>
                                                     </div>
                                                 </div>
                                         <!--Wishlist Section -->
@@ -633,41 +651,63 @@
 
                             <div class="col-lg-3">
                                 <div class="arrivals_single clearfix">
-                                    <div class="d-flex flex-column align-items-center justify-content-center">
-                                        <div class="arrivals_single_image">
-                                            <img src="@if(isset($discout_product->image_one)){{ asset('public/backend/media/product/'.$discout_product->image_one) }}
-                                                @else {{ asset('public/frontend/images/banner_product.png') }} @endif " alt="">
+                                    @if ($discout_product == Null)
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <div class="arrivals_single_image"><img src="{{ asset('/public/frontend/img/41r9I3xo1YL.jpg') }}" alt=""></div>
+                                            <div class="arrivals_single_content">
+                                                <div class="arrivals_single_category"><a href="#">Discount</a></div>
+                                                <div class="arrivals_single_name_container clearfix">
+                                                    <div class="arrivals_single_name"><a href="#">No More Discount</a></div>
+                                                    <div class="arrivals_single_price text-right">00.00</div>
+                                                </div>
+                                                <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                <form action="#"><button class="arrivals_single_button">Add to Cart</button></form>
+                                            </div>
+                                            <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
+                                            <ul class="arrivals_single_marks product_marks">
+                                                <li class="arrivals_single_mark product_mark product_new">new</li>
+                                            </ul>
                                         </div>
-                                        <div class="arrivals_single_content">
-                                            <div class="arrivals_single_category"><a href="#">{{ $discout_product->brand->brand_name ?? '' }}</a></div>
-                                            <div class="arrivals_single_name_container clearfix">
-                                                <div class="arrivals_single_name"><a href="#">{{ $discout_product->product_name ?? ''}}</a></div><br>
-                                                <div class="arrivals_single_price text-right">
-                                                    <div class="product_price discount">
-                                                        ${{ $discout_product->discount_price ?? ''}}<span>${{ $discout_product->selling_price  ?? ''}}</span>
+                                    @else
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <div class="arrivals_single_image">
+                                                <img src="@if(isset($discout_product->image_one)){{ asset('public/backend/media/product/'.$discout_product->image_one) }}
+                                                    @else {{ asset('public/frontend/images/banner_product.png') }} @endif " alt="">
+                                            </div>
+                                            <div class="arrivals_single_content">
+                                                <div class="arrivals_single_category"><a href="#">{{ $discout_product->brand->brand_name ?? '' }}</a></div>
+                                                <div class="arrivals_single_name_container clearfix">
+                                                    <div class="arrivals_single_name"><a href="#">{{ $discout_product->product_name ?? ''}}</a></div><br>
+                                                    <div class="arrivals_single_price text-right">
+                                                        <div class="product_price discount">
+                                                            ${{ $discout_product->discount_price ?? ''}}<span>${{ $discout_product->selling_price  ?? ''}}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {{-- <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div> --}}
+                                                {{-- <button class="arrivals_single_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}}<!--add to cart-->
+                                                <button id="{{ $discout_product->id }}" class="arrivals_single_button addcart" data-toggle="modal" 
+                                                    data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
+                                                </button>
                                             </div>
-                                            {{-- <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div> --}}
-                                            <button class="arrivals_single_button addcart" data-id="{{ $item->id }}">Add to Cart</button>
+                                            <a class="addwishlist" data-id="{{ $item->id }}"> 
+                                                <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
+                                            </a>
+                                            <ul class="arrivals_single_marks product_marks">
+                                                @if ($main_slide->discount_price == Null )
+                                                    <li class="product_mark product_discount" style="background: green;">New</li>
+                                                @else
+                                                    @php
+                                                        $amount = $main_slide->selling_price - $main_slide->discount_price;
+                                                        $discount = $amount / $main_slide->selling_price * 100;
+                                                    @endphp
+                                                    <li class="product_mark product_discount">
+                                                        {{ intval($discount) }}%
+                                                    </li>
+                                                @endif
+                                            </ul>
                                         </div>
-                                        <a class="addwishlist" data-id="{{ $item->id }}"> 
-                                            <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
-                                        </a>
-                                        <ul class="arrivals_single_marks product_marks">
-                                            @if ($main_slide->discount_price == Null )
-                                                <li class="product_mark product_discount" style="background: green;">New</li>
-                                            @else
-                                                 @php
-                                                    $amount = $main_slide->selling_price - $main_slide->discount_price;
-                                                    $discount = $amount / $main_slide->selling_price * 100;
-                                                @endphp
-                                                <li class="product_mark product_discount">
-                                                    {{ intval($discount) }}%
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -1429,7 +1469,7 @@
     <!-- ByeOne GetOne -->
 
     <div class="trends">
-        <div class="trends_background" style="background-image:url(images/trends_background.jpg)"></div>
+        <div class="trends_background" style="background-image:url({{ asset('/public/frontend/images/trends_background.jpg') }})"></div>
         <div class="trends_overlay"></div>
         <div class="container">
             <div class="row">
@@ -1756,7 +1796,7 @@
                             @foreach ($brandlogo as $item)
                             <div class="owl-item">
                                 <div class="brands_item d-flex flex-column justify-content-center">
-                                    <img src="{{ asset('/public/backend/media/brands/' .$item->brand_logo) }}" alt="Brand Logo">
+                                    <img src="{{ asset('/public/backend/media/brands/' .$item->brand_logo) ?? ''}}">
                                 </div>
                             </div>
                             @endforeach
@@ -1770,10 +1810,110 @@
             </div>
         </div>
     </div>
+
+    <!--product cart add modal-->
+
+    <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Product Short Description</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card" style="width: 16rem;">
+                        <img src="" class="card-img-top" id="pimage" style="height: 240px; margin-top: 10px;">
+                    <div class="card-body"></div>
+                </div>
+                </div>
+                <div class="col-md-4 ml-auto">
+                    <ul class="list-group">
+                    <li class="list-group-item"> <h5 class="card-title" id="pname"></h5></span></li>
+                <li class="list-group-item">Product code: <span id="pcode"> </span></li>
+                    <li class="list-group-item">Category:  <span id="pcat"> </span></li>
+                    <li class="list-group-item">SubCategory:  <span id="psubcat"> </span></li>
+                    <li class="list-group-item" name="bndiv">Brand: <span id="pbrand"> </span></li>
+                    <li class="list-group-item">Stock: <span class="badge " style="background: green; color:white;">Available</span></li>
+                </ul>
+                </div>
+                <div class="col-md-4 ">
+                    <form action="{{ route('product.cart.insert') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" id="product_id">
+                        <div class="form-group" id="colordiv">
+                            <label for="">Color</label>
+                            <select name="color" class="form-control">
+                            </select>
+                        </div>
+                        <div class="form-group" id="sizediv" >
+                            <label for="exampleInputEmail1">Size</label>
+                            <select name="size" class="form-control" id="size">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Quantity</label>
+                            <input type="number" class="form-control" value="1" name="qty">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add To Cart</button>
+                    </form>
+                </div>
+            </div>
+            </div>  
+        </div>
+        </div>
+    </div>
+
+<!--modal end-->
+   
     
 @endsection
 
 @push('js')
+
+    <!---- Product Sort Details By Model ---->
+    
+    <script type="text/javascript">
+        function productview(id){
+              $.ajax({
+                        url: "{{  url('/cart/product/view/') }}/"+id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                            var public_path =  {!! json_encode(url('/')) !!}+"/public/backend/media/product/"+data.product.image_one;
+                            $('#pname').text(data.product.product_name);
+                            $('#pimage').attr('src',public_path);
+                            $('#pcode').text(data.product.product_code);
+                            $('#pcat').text(data.cat.category_name);
+                            $('#psubcat').text(data.subcat.subcategory_name);
+                            $('#pbrand').text(data.bnd.brand_name);
+                            $('#product_id').val(data.product.id);
+
+                            var d =$('select[name="color"]').empty();
+                            $.each(data.color, function(key, value){
+                                $('select[name="color"]').append('<option value="'+ value +'">' + value + '</option>');
+                                if (data.color == "") {
+                                    $('#colordiv').hide();   
+                                }else{
+                                    $('#colordiv').show();
+                                }
+                            });
+                            var d =$('select[name="size"]').empty();
+                            $.each(data.size, function(key, value){
+                                $('select[name="size"]').append('<option value="'+ value +'">' + value + '</option>');
+                                if (data.size == "") {
+                                    $('#sizediv').hide();   
+                                }else{
+                                    $('#sizediv').show();
+                                }
+                            });
+                        }
+                })
+        }
+    </script>
     
     <!---- Wishlish Ajax request ---->
     
@@ -1819,7 +1959,7 @@
     
     <!---- Add to card Ajax request ---->
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
             $(document).ready(function() {
               $('.addcart').on('click', function(){  
                 var id = $(this).data('id');
@@ -1857,6 +1997,6 @@
                 e.preventDefault();
            });
        });
-    </script>
+    </script> --}}
 
 @endpush

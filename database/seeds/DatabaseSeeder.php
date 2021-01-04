@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AdminsTableSeeder::class,
             CategoriesSeeder::class,
             Sub__categoriesSeeder::class,
+            BrandsTableSeeder::class
         ]);
 
     }
