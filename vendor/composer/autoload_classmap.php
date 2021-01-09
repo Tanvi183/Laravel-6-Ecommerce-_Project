@@ -59,6 +59,7 @@ return array(
     'App\\model\\admin\\Newslatter' => $baseDir . '/app/model/admin/Newslatter.php',
     'App\\model\\admin\\PostCategory' => $baseDir . '/app/model/admin/PostCategory.php',
     'App\\model\\admin\\Product' => $baseDir . '/app/model/admin/Product.php',
+    'App\\model\\admin\\Setting' => $baseDir . '/app/model/admin/Setting.php',
     'App\\model\\admin\\Sub_Category' => $baseDir . '/app/model/admin/Sub_Category.php',
     'App\\test' => $baseDir . '/app/test.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

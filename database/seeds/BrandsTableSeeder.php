@@ -17,8 +17,8 @@ class BrandsTableSeeder extends Seeder
         if(DB::table('brands')->get()->count() == 0){
 
             DB::table('brands')->insert([
-                'brand_name'  => "Not Brand",
-                'brand_slug'  => "Not Brand",
+                'brand_name'  => "Unknown",
+                'brand_slug'  => "Unknown",
             ]);
 
         } else {

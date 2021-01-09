@@ -29,10 +29,17 @@
 											<div class="cart_item_title">Product Name</div>
 											<div class="cart_item_text">{{ $item->name }}</div>
 										</div>
+
+										@if($item->options->color == NULL)
+										@else
 										<div class="cart_item_color cart_info_col">
 											<div class="cart_item_title">Color</div>
-											<div class="cart_item_text">{{ $item->options->color }}</div>
-                                        </div>
+											<div class="cart_item_text">
+													{{ $item->options->color }}
+											</div>
+										</div>
+										@endif
+
                                         @if($item->options->size == NULL)
 										@else
 										<div class="cart_item_color cart_info_col">
@@ -40,6 +47,7 @@
 											<div class="cart_item_text">{{ $item->options->size }}</div>
 										</div>
 										@endif
+
                                         <div class="cart_item_quantity cart_info_col">
                                             <div class="cart_item_title mt-3">Quantity</div>
                                             <br>
@@ -49,14 +57,17 @@
                                                 <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square"></i></button>
                                             </form>
 										</div>
+
 										<div class="cart_item_price cart_info_col">
 											<div class="cart_item_title">Price</div>
 											<div class="cart_item_text">${{ $item->price }}</div>
 										</div>
+
 										<div class="cart_item_total cart_info_col">
 											<div class="cart_item_title">Total</div>
 											<div class="cart_item_text">${{ $item->price * $item->qty }}</div>
-                                        </div>
+										</div>
+										
                                         <div class="cart_item_total cart_info_col">
 											<div class="cart_item_title">Action</div>
 											<div class="cart_item_text"><a href="{{ route('cart.product.remove', $item->rowId) }}"><i class="fas fa-trash-alt" title="Delete" style="color: red;"></i></a></div>
@@ -76,8 +87,8 @@
 						</div>
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_clear">All Delete</button>
-							<button type="button" class="button cart_button_checkout">Check Out</button>
+							<button type="button" class="button cart_button_clear">All Clear</button>
+							<a href="{{ route('user.checkout') }}" class="button cart_button_checkout">Check Out</a>
 						</div>
 					</div>
 				</div>

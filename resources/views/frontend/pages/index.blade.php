@@ -1,10 +1,10 @@
 @extends('frontend.app')
 
-@section('content')
-
 @section('category_menu')
     @include('frontend.includes.category_menu')
 @endsection
+
+@section('content')
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
@@ -36,6 +36,7 @@
             </div>
         </div>
     </div>
+
 	<!-- Characteristics -->
 
     <div class="characteristics">
@@ -225,7 +226,7 @@
                                                 </div>
                                             </div>
                                     <!-- Wishlist Section -->
-                                            <button class="addwishlist" data-id="{{ $item->id }}"> 
+                                            <button id="wishlist" class="addwishlist" data-id="{{ $item->id }}"> 
                                                 <div class="product_fav">
                                                     <i class="fa fa-heart text-info"></i>  
                                                 </div>
@@ -283,7 +284,7 @@
                                                 </div>
                                             </div>
                                     {{-- Wishlist Section --}}
-                                            <button class="addwishlist" data-id="{{ $row->id }}"> 
+                                            <button id="wishlist" class="addwishlist" data-id="{{ $row->id }}"> 
                                                 <div class="product_fav">
                                                     <i class="fa fa-heart text-info"></i>  
                                                 </div>
@@ -339,7 +340,7 @@
                                                 </div>
                                             </div>
                                     {{-- Wishlist Section --}}
-                                                <button class="addwishlist" data-id="{{ $row->id }}">
+                                                <button id="wishlist" class="addwishlist" data-id="{{ $row->id }}">
                                                     <div class="product_fav">
                                                         <i class="fa fa-heart text-info"></i>  
                                                     </div>
@@ -438,7 +439,7 @@
                                         <div class="banner_2_text">{{  $item->brand->brand_name ?? '' }}</div>
                                         <div class="banner_2_text">Product Code : {{  $item->product_code }}</div>
                                         <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                        <div class="button banner_2_button"><a href="{{ url('/product/details/'.$item->product_code.'/'.$item->product_name) }}">Explore</a></div>
                                     </div>  
                                 </div>
                                 <div class="col-lg-8 col-md-6 fill_height">
@@ -505,9 +506,10 @@
                                                     </div>
                                                 </div>
                                         <!--Wishlist Section -->
-                                                <button class="addwishlist" data-id="{{ $item->id }}"> 
+                                                <button id="wishlist" data-id="{{ $item->id }}">
                                                     <div class="product_fav">
-                                                        <i class="fa fa-heart text-info"></i>  
+                                                        <i class="fas fa-heart">
+                                                        </i>
                                                     </div>
                                                 </button>
                                         <!--End Wishlist Section -->
@@ -564,9 +566,10 @@
                                                     </div>
                                                 </div>
                                         <!--Wishlist Section -->
-                                                <button class="addwishlist" data-id="{{ $item->id }}"> 
+                                                <button id="wishlist" data-id="{{ $item->id }}">
                                                     <div class="product_fav">
-                                                        <i class="fa fa-heart text-info"></i>  
+                                                        <i class="fas fa-heart">
+                                                        </i>
                                                     </div>
                                                 </button>
                                         <!--End Wishlist Section -->
@@ -622,11 +625,12 @@
                                                     </div>
                                                 </div>
                                         <!--Wishlist Section -->
-                                                <a class="addwishlist" data-id="{{ $item->id }}"> 
+                                                <button id="wishlist" data-id="{{ $item->id }}">
                                                     <div class="product_fav">
-                                                        <i class="fa fa-heart text-info"></i>  
+                                                        <i class="fas fa-heart">
+                                                        </i>
                                                     </div>
-                                                </a>
+                                                </button>
                                         <!--End Wishlist Section -->
                                                 <ul class="product_marks">
                                                     @if ($item->discount_price == Null)
@@ -675,9 +679,11 @@
                                                     @else {{ asset('public/frontend/images/banner_product.png') }} @endif " alt="">
                                             </div>
                                             <div class="arrivals_single_content">
-                                                <div class="arrivals_single_category"><a href="#">{{ $discout_product->brand->brand_name ?? '' }}</a></div>
+                                                <div class="arrivals_single_category"><a href="#">{{ $discout_product->brand->brand_name ?? '' }}</a></div><br>
                                                 <div class="arrivals_single_name_container clearfix">
-                                                    <div class="arrivals_single_name"><a href="#">{{ $discout_product->product_name ?? ''}}</a></div><br>
+                                                    <div class="arrivals_single_name">
+                                                        <a style="font-size: 20px; color: rgb(8, 5, 19);" href="{{ url('/product/details/'.$discout_product->product_code.'/'.$discout_product->product_name) }}">{{ $discout_product->product_name ?? ''}}</a>
+                                                    </div>
                                                     <div class="arrivals_single_price text-right">
                                                         <div class="product_price discount">
                                                             ${{ $discout_product->discount_price ?? ''}}<span>${{ $discout_product->selling_price  ?? ''}}</span>
@@ -685,14 +691,18 @@
                                                     </div>
                                                 </div>
                                                 {{-- <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div> --}}
+                                        <!-- Add to Cart --->
                                                 {{-- <button class="arrivals_single_button addcart" data-id="{{ $item->id }}">Add to Cart</button> --}}<!--add to cart-->
                                                 <button id="{{ $discout_product->id }}" class="arrivals_single_button addcart" data-toggle="modal" 
                                                     data-target="#cartmodal" onclick="productview(this.id)">Add to Cart
                                                 </button>
+                                        <!-- Add to Cart --->
                                             </div>
-                                            <a class="addwishlist" data-id="{{ $item->id }}"> 
+                                        <!-- wishlist --->
+                                            <a id="wishlist" class="addwishlist" data-id="{{ $item->id }}"> 
                                                 <div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
                                             </a>
+                                        <!-- End wishlist --->
                                             <ul class="arrivals_single_marks product_marks">
                                                 @if ($main_slide->discount_price == Null )
                                                     <li class="product_mark product_discount" style="background: green;">New</li>
@@ -1533,7 +1543,7 @@
                                             @endif    
                                         </ul>
                                         <!--Wishlist Section -->
-                                        <a class="addwishlist" data-id="{{ $item->id }}"> 
+                                        <a id="wishlist" class="addwishlist" data-id="{{ $item->id }}"> 
                                             <div class="trends_fav">
                                                 <i class="fas fa-heart text-info"></i>
                                             </div>
@@ -1811,123 +1821,25 @@
         </div>
     </div>
 
-    <!--product cart add modal-->
-
-    <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalLabel">Product Short Description</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card" style="width: 16rem;">
-                        <img src="" class="card-img-top" id="pimage" style="height: 240px; margin-top: 10px;">
-                    <div class="card-body"></div>
-                </div>
-                </div>
-                <div class="col-md-4 ml-auto">
-                    <ul class="list-group">
-                    <li class="list-group-item"> <h5 class="card-title" id="pname"></h5></span></li>
-                <li class="list-group-item">Product code: <span id="pcode"> </span></li>
-                    <li class="list-group-item">Category:  <span id="pcat"> </span></li>
-                    <li class="list-group-item">SubCategory:  <span id="psubcat"> </span></li>
-                    <li class="list-group-item" name="bndiv">Brand: <span id="pbrand"> </span></li>
-                    <li class="list-group-item">Stock: <span class="badge " style="background: green; color:white;">Available</span></li>
-                </ul>
-                </div>
-                <div class="col-md-4 ">
-                    <form action="{{ route('product.cart.insert') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="product_id" id="product_id">
-                        <div class="form-group" id="colordiv">
-                            <label for="">Color</label>
-                            <select name="color" class="form-control">
-                            </select>
-                        </div>
-                        <div class="form-group" id="sizediv" >
-                            <label for="exampleInputEmail1">Size</label>
-                            <select name="size" class="form-control" id="size">
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Quantity</label>
-                            <input type="number" class="form-control" value="1" name="qty">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add To Cart</button>
-                    </form>
-                </div>
-            </div>
-            </div>  
-        </div>
-        </div>
-    </div>
-
-<!--modal end-->
+    @include('frontend.model.product_cart_modal')
    
     
 @endsection
 
 @push('js')
 
-    <!---- Product Sort Details By Model ---->
-    
-    <script type="text/javascript">
-        function productview(id){
-              $.ajax({
-                        url: "{{  url('/cart/product/view/') }}/"+id,
-                        type:"GET",
-                        dataType:"json",
-                        success:function(data) {
-                            var public_path =  {!! json_encode(url('/')) !!}+"/public/backend/media/product/"+data.product.image_one;
-                            $('#pname').text(data.product.product_name);
-                            $('#pimage').attr('src',public_path);
-                            $('#pcode').text(data.product.product_code);
-                            $('#pcat').text(data.cat.category_name);
-                            $('#psubcat').text(data.subcat.subcategory_name);
-                            $('#pbrand').text(data.bnd.brand_name);
-                            $('#product_id').val(data.product.id);
-
-                            var d =$('select[name="color"]').empty();
-                            $.each(data.color, function(key, value){
-                                $('select[name="color"]').append('<option value="'+ value +'">' + value + '</option>');
-                                if (data.color == "") {
-                                    $('#colordiv').hide();   
-                                }else{
-                                    $('#colordiv').show();
-                                }
-                            });
-                            var d =$('select[name="size"]').empty();
-                            $.each(data.size, function(key, value){
-                                $('select[name="size"]').append('<option value="'+ value +'">' + value + '</option>');
-                                if (data.size == "") {
-                                    $('#sizediv').hide();   
-                                }else{
-                                    $('#sizediv').show();
-                                }
-                            });
-                        }
-                })
-        }
-    </script>
-    
     <!---- Wishlish Ajax request ---->
-    
+
     <script type="text/javascript">
-        $(document).ready(function() {
-              $('.addwishlist').on('click', function(){  
-                var id = $(this).data('id');
-                if(id) {
-                   $.ajax({
-                       url: "{{  url('/add/wishlist/') }}/"+id,
-                       type:"GET",
-                       dataType:"json",
-                       success:function(data) {
-                         const Toast = Swal.mixin({
+        $(document).ready(function(){
+            $(document).on('click','#wishlist', function(){
+                var product_id = $(this).data('id');
+                $.ajax({
+                    url: "{{ route('customer.wishlist') }}",
+                    type: "GET",
+                    data: {product_id:product_id},
+                    success:function(data){
+                        const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
                             showConfirmButton: false,
@@ -1945,58 +1857,10 @@
                                   title: data.error
                               })
                          }
-    
-                       },
-                      
-                   });
-               } else {
-                   alert('danger');
-               }
-                e.preventDefault();
-           });
-       });
+                    }// End Success //
+                });
+            });
+        });
     </script>
     
-    <!---- Add to card Ajax request ---->
-
-    {{-- <script type="text/javascript">
-            $(document).ready(function() {
-              $('.addcart').on('click', function(){  
-                var id = $(this).data('id');
-                if(id) {
-                   $.ajax({
-                       url: "{{  url('/add/to/card/') }}/"+id,
-                       type:"GET",
-                       dataType:"json",
-                       success:function(data) {
-                         const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000
-                          })
-    
-                         if($.isEmptyObject(data.error)){
-                              Toast.fire({
-                                type: 'success',
-                                title: data.success
-                              })
-                         }else{
-                               Toast.fire({
-                                  type: 'error',
-                                  title: data.error
-                              })
-                         }
-    
-                       },
-                      
-                   });
-               } else {
-                   alert('danger');
-               }
-                e.preventDefault();
-           });
-       });
-    </script> --}}
-
 @endpush

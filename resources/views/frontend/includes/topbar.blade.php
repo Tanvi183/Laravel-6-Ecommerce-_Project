@@ -19,8 +19,6 @@
                                 <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
                                 {{-- <ul>
                                     <li><a href="#">EUR Euro</a></li>
-                                    <li><a href="#">GBP British Pound</a></li>
-                                    <li><a href="#">JPY Japanese Yen</a></li>
                                 </ul> --}}
                             </li>
                         </ul>
@@ -33,8 +31,8 @@
                                 <li>
                                     <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg') }}" alt="user icon"></div> Profile<i class="fas fa-chevron-down"></i></a>
                                     <ul>
-                                        <li><a href="#">Wishlist</a></li>
-                                        <li><a href="#">CheckOut</a></li>
+                                        <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
+                                        <li><a href="{{ route('user.checkout') }}">CheckOut</a></li>
                                         <li><a href="#">Extra</a></li>
                                     </ul>
                                 </li>

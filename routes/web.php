@@ -11,7 +11,7 @@ Route::post('/password-update', 'HomeController@updatePassword')->name('password
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
                 //======== Sociallite Login Route Here  ===========//
 Route::get('/auth/redirect/{provider}', 'Auth\GoogleController@redirect');
-Route::get('/callback/{provider}', 'GoogleController@callback');
+Route::get('/callback/{provider}', 'Auth\GoogleController@callback');
 
 //==================================== Admin Route Here ===================================================//
 //========================================================================================================//
@@ -67,16 +67,23 @@ Route::get('/','FrontendController@index');
         // Newsletter =======
 Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.newsletter');
         // Wishlist
-Route::get('add/wishlist/{id}', 'Frontend\WishlistController@AddWishlist');
+Route::get('/wishlist', 'Frontend\wishlistController@wishlist')->name('customer.wishlist');
+Route::get('show/wishlist/list', 'Frontend\WishlistController@showWishlist')->name('user.wishlist');
 
 //============================= Add To Cart Route Here  =====================================//
 
 Route::get('add/to/card/{id}', 'Frontend\AddCartController@addtoCart'); //Ajax
 Route::post('add/cart/product', 'Frontend\AddCartController@addCart')->name('add.to.cart'); //Page Load
-Route::get('show/cart', 'Frontend\AddCartController@showCart')->name('show.cart'); //show Cart
+Route::get('show/cart', 'Frontend\AddCartController@showCart')->name('cart.product.list'); //show Cart
 Route::get('/cart/product/remove/{rowId}', 'Frontend\AddCartController@removeCart')->name('cart.product.remove'); //Remove Cart
 Route::post('/cart/product/update/{id}', 'Frontend\AddCartController@updateCart')->name('cart.product.update');
 Route::post('insert/prodcut/cart', 'Frontend\AddCartController@insertCart')->name('product.cart.insert');
+        //checkout
+Route::get('user/cheack/out', 'Frontend\AddCartController@checkOut')->name('user.checkout');
+        //Apply Coupon
+Route::post('user/apply/coupon', 'Frontend\AddCartController@coupon')->name('apply.coupon');
+Route::get('user/remove/coupon', 'Frontend\AddCartController@couponRemove')->name('user.coupons.remove');
+
 
         //product Details
 Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');

@@ -1,0 +1,80 @@
+@extends('frontend.app')
+
+@push('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/styles/cart_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/styles/cart_responsive.css') }}">
+@endpush
+@section('category_menu')
+    @include('frontend.includes.category_menu')
+@endsection
+@section('content')
+
+	<!-- Cart -->
+
+	<div class="cart_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="cart_container">
+						<div class="cart_title">All Wishlist Product</div>
+						<div class="cart_items">
+                            @foreach ($wishlist as $item)
+							<ul class="cart_list">
+								<li class="cart_item clearfix">
+									<div class="cart_item_image">
+                                        <img src="@if(isset($item->image_one)){{ asset('public/backend/media/product/'.$item->image_one) }}
+                                                    @else {{ asset('/public/frontend/images/41r9I3xo1YL.jpg') }} @endif" alt="" style="height: 120px;">
+                                    </div>
+									<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+										<div class="cart_item_name cart_info_col">
+											<div class="cart_item_title">Product Name</div>
+                                            <div class="cart_item_text">
+                                                <a href="{{ url('/product/details/'.$item->product_code.'/'.$item->product_name) }}">{{ $item->product_name }}</a>
+                                            </div>
+                                        </div>
+                                        @if ($item->product_colour)
+                                        @else
+                                        <div class="cart_item_color cart_info_col">
+											<div class="cart_item_title">Color</div>
+											<div class="cart_item_text">{{ $item->product_colour }}</div>
+                                        </div>
+                                        @endif
+										
+                                        @if($item->product_size == NULL)
+										@else
+										<div class="cart_item_color cart_info_col">
+											<div class="cart_item_title">Size</div>
+											<div class="cart_item_text">{{ $item->product_size }}</div>
+										</div>
+										@endif
+										<div class="cart_item_price cart_info_col">
+                                            <div class="cart_item_title">Price</div>
+											@if ($item->discount_price == Null)
+                                                <div class="cart_item_text">${{ $item->selling_price }}</div>
+                                            @else
+                                                <div class="cart_item_text">${{ $item->discount_price }}</div>
+                                            @endif
+										</div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_text">
+                                                <button id="{{ $item->id }}" class="addcart btn btn-danger"  data-toggle="modal" 
+                                                    data-target="#cartmodal" onclick="productview(this.id)">Add To Cart</button>
+                                            </div>
+										</div>
+									</div>
+								</li>
+                            </ul>
+                            @endforeach
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+    @include('frontend.model.product_cart_modal')
+
+@endsection
+@push('js')
+    <script src="{{ asset('/public/frontend/js/cart_custom.js') }}"></script>
+@endpush

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use Auth;
+use Cart;
+use Session;
+use App\model\admin\Cupon;
 use App\model\admin\Product;
 use Illuminate\Http\Request;
-use Cart;
+use App\Http\Controllers\Controller;
 
 class AddCartController extends Controller
 {
@@ -159,6 +162,57 @@ class AddCartController extends Controller
                 );
             return Redirect()->back()->with($notification); 
         }
+    }
+
+    //CheckOut
+    public function checkOut()
+    {
+        if (Auth::check()) {
+            $cart = Cart::content();
+            return view('frontend.pages.checkout', compact('cart'));
+        }else{
+            $notification=array(
+                'messege'=>'At First Login Your Account',
+                'alert-type'=>'errror'
+            );
+            return redirect()->to('login')->with($notification);
+        }
+    }
+
+    //Coupon
+    public function coupon(Request $request)
+    {
+        $coupon = $request->coupon;
+        $couponCheck = Cupon::where('coupon', $coupon)->first();
+        $str = Cart::Subtotal();
+        $cartTotal = str_replace(',', '', $str);
+
+        if ($couponCheck) {
+            session::put('coupon', [
+                'name'     => $couponCheck->coupon,
+                'discount' => $couponCheck->discount,
+                'amount'   => $cartTotal - $couponCheck->discount,
+            ]);
+            $notification=array(
+                'messege'=>'Coupon Applied Successfully',
+                'alert-type'=>'success'
+                );
+            return Redirect()->back()->with($notification);
+        }else{
+            // Notification...
+            $notification = array(
+                'messege'    => 'Sorry! The Coupon Code is already expired',
+                'alert-type' => 'error',
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
+
+    //Remove Coupon
+    public function couponRemove(Request $request)
+    {
+        session::forget('coupon');
+        return redirect()->back();
     }
 
 }

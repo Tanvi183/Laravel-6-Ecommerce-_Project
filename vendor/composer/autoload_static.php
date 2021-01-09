@@ -538,6 +538,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\model\\admin\\Newslatter' => __DIR__ . '/../..' . '/app/model/admin/Newslatter.php',
         'App\\model\\admin\\PostCategory' => __DIR__ . '/../..' . '/app/model/admin/PostCategory.php',
         'App\\model\\admin\\Product' => __DIR__ . '/../..' . '/app/model/admin/Product.php',
+        'App\\model\\admin\\Setting' => __DIR__ . '/../..' . '/app/model/admin/Setting.php',
         'App\\model\\admin\\Sub_Category' => __DIR__ . '/../..' . '/app/model/admin/Sub_Category.php',
         'App\\test' => __DIR__ . '/../..' . '/app/test.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

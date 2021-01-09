@@ -47,7 +47,7 @@
                         @endphp
                             <div class="wishlist_icon"><img src="{{ asset('public/frontend/images/heart.png') }}" alt=""></div>
                             <div class="wishlist_content">
-                                <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
                                 <div class="wishlist_count">{{ count($wishlist) }}</div>
                             </div>
                         @endguest
@@ -61,7 +61,7 @@
                                 <div class="cart_count"><span>{{ Cart::count() }}</span></div>
                             </div>
                             <div class="cart_content">
-                                <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
+                                <div class="cart_text"><a href="{{ route('cart.product.list') }}">Cart</a></div>
                                 <div class="cart_price">${{ Cart::subtotal() }}</div>
                             </div>
                         </div>
