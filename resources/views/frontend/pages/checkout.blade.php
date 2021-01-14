@@ -162,11 +162,13 @@
 												<span style="float: right; margin-right: 10%;">$ {{ $cartTotal + $cartTotal/100 * $charge +$cartTotal/100 * $vat}}</span>
 											</li>
 										@endif
-
 									</div>
 								</li>
 							</ul>
-
+							<div class="cart_buttons">
+								<a href="{{ route('cart.product.list') }}" type="button" class="button cart_button_clear">Back</button>
+								<a href="{{ route('payment.page') }}" type="button" class="button cart_button_checkout">Final Step</a>
+							</div>
 						</div>
 					</div>
 				</div>

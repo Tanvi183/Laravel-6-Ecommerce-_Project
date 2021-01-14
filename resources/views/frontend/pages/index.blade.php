@@ -30,7 +30,7 @@
                             @else Product Price Null @endif
                         </div>
                         <div class="banner_product_name">{{ $main_slide->brand->brand_name ?? ''}}</div>
-                        <div class="button banner_button"><a href="#">Shop Now</a></div>
+                        <div class="button banner_button"><a href="{{ url('/product/details/'.$main_slide->product_code.'/'.$main_slide->product_name) }}">Shop Now</a></div>
                     </div>
                 </div>
             </div>
@@ -397,12 +397,14 @@
                         <div class="owl-carousel owl-theme popular_categories_slider">
                             <!-- Popular Categories Item -->
                             @foreach ($category as $item)
-                            <div class="owl-item">
-                                <div class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                    <div class="popular_category_image"><img src="{{ asset('public/frontend/images/popular_1.png') }}" alt=""></div>
-                                    <div class="popular_category_text">{{ $item->category_name ?? ''}}</div>
+                                <a href="{{ url('/products/category/'.$item->id.'/'.$item->category_name) }}">
+                                <div class="owl-item" style="color: black;">
+                                    <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+                                        <div class="popular_category_image"><img src="{{ asset('public/frontend/images/popular_1.png') }}" alt=""></div>
+                                        <div class="popular_category_text">{{ $item->category_name ?? ''}}</div>
+                                    </div>
                                 </div>
-                            </div>                            
+                                </a>                           
                             @endforeach
                         </div>
                     </div>
@@ -1825,42 +1827,3 @@
    
     
 @endsection
-
-@push('js')
-
-    <!---- Wishlish Ajax request ---->
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(document).on('click','#wishlist', function(){
-                var product_id = $(this).data('id');
-                $.ajax({
-                    url: "{{ route('customer.wishlist') }}",
-                    type: "GET",
-                    data: {product_id:product_id},
-                    success:function(data){
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000
-                          })
-    
-                         if($.isEmptyObject(data.error)){
-                              Toast.fire({
-                                type: 'success',
-                                title: data.success
-                              })
-                         }else{
-                               Toast.fire({
-                                  type: 'error',
-                                  title: data.error
-                              })
-                         }
-                    }// End Success //
-                });
-            });
-        });
-    </script>
-    
-@endpush

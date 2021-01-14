@@ -6,6 +6,7 @@ use App\model\admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\model\admin\Category;
 // use Cart;
 use Response;
 
@@ -51,6 +52,24 @@ class ProductController extends Controller
                 'color'   => $color,
                 'size'    => $size,
             ));
+    }
+
+    //Category wise Product
+    public function categoryProducts($id,$catname)
+    {
+        $categoryProducts    = Product::where('category_id', $id)->paginate(20);
+        $brands              = Product::where('category_id', $id)->select('brand_id')->groupBy('brand_id')->get();
+        $subcategoryproducts = Product::where('category_id', $id)->select('subcategory_id')->groupBy('subcategory_id')->get();
+        return view('frontend.pages.category_products',compact('categoryProducts', 'brands', 'subcategoryproducts', 'catname'));
+    }
+
+    //Subcategory wise Product
+    public function subCategoryProducts($id,$subcatname)
+    {
+        $subcatProduct = Product::where('subcategory_id', $id)->paginate(20);
+        $brands         = product::where('subcategory_id', $id)->select('brand_id')->groupBy('brand_id')->get();
+        $categories    = Category::select('id', 'category_name')->get();
+        return view('frontend.pages.subcategory_product', compact('subcatname','subcatProduct','categories','brands'));
     }
 
 }

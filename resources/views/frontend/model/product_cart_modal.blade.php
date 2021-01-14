@@ -137,4 +137,39 @@
            });
        });
     </script> --}}
+
+    	 <!---- Wishlish Ajax request ---->
+
+	 <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).on('click','#wishlist', function(){
+                var product_id = $(this).data('id');
+                $.ajax({
+                    url: "{{ route('customer.wishlist') }}",
+                    type: "GET",
+                    data: {product_id:product_id},
+                    success:function(data){
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                          })
+    
+                         if($.isEmptyObject(data.error)){
+                              Toast.fire({
+                                type: 'success',
+                                title: data.success
+                              })
+                         }else{
+                               Toast.fire({
+                                  type: 'error',
+                                  title: data.error
+                              })
+                         }
+                    }// End Success //
+                });
+            });
+        });
+	</script>
     

@@ -63,14 +63,14 @@ Route::get('blogPost/inctive/{id}', 'Blog\PostController@inctive')->name('blogPo
 //==================================== Frontend All Route Here ===================================================//
 //===============================================================================================================//
         // Frontend =======
-Route::get('/','FrontendController@index');
+Route::get('/','FrontendController@index')->name('index');
         // Newsletter =======
 Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.newsletter');
         // Wishlist
 Route::get('/wishlist', 'Frontend\wishlistController@wishlist')->name('customer.wishlist');
 Route::get('show/wishlist/list', 'Frontend\WishlistController@showWishlist')->name('user.wishlist');
 
-//============================= Add To Cart Route Here  =====================================//
+//======= Add To Cart Route Here ==========//
 
 Route::get('add/to/card/{id}', 'Frontend\AddCartController@addtoCart'); //Ajax
 Route::post('add/cart/product', 'Frontend\AddCartController@addCart')->name('add.to.cart'); //Page Load
@@ -83,8 +83,20 @@ Route::get('user/cheack/out', 'Frontend\AddCartController@checkOut')->name('user
         //Apply Coupon
 Route::post('user/apply/coupon', 'Frontend\AddCartController@coupon')->name('apply.coupon');
 Route::get('user/remove/coupon', 'Frontend\AddCartController@couponRemove')->name('user.coupons.remove');
-
+        //Payment Getway
+Route::get('product/payment/page', 'Frontend\PaymentController@index')->name('payment.page');
+Route::post('product/payment/process', 'Frontend\PaymentController@process')->name('payment.process');
+Route::post('stripe/charge/payment', 'Frontend\PaymentController@stripe')->name('stripe.charge');
 
         //product Details
 Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');
 Route::get('cart/product/view/{id}','Frontend\ProductController@productView');    //Product view
+Route::get('products/category/{id}/{catname}','Frontend\ProductController@categoryProducts')->name('products.category');
+Route::get('product/subcategory/{id}/{subcatname}','Frontend\ProductController@subCategoryProducts')->name('products.subcategory');
+       //Blog show 
+Route::get('blog/show/all', 'Frontend\BlogController@Blog')->name('all.blog.show');
+Route::get('blog/language/english', 'Frontend\BlogController@BlogEng')->name('language.english');
+Route::get('blog/language/Bangla', 'Frontend\BlogController@BlogBan')->name('language.bangla');
+
+
+
