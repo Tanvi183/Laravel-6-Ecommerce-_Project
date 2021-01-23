@@ -32,7 +32,7 @@
                                     <ul>
                                         <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
                                         <li><a href="{{ route('user.checkout') }}">CheckOut</a></li>
-                                        <li><a href="#">Extra</a></li>
+                                        <li><a href="{{ route('user.logout') }}">Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>

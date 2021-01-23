@@ -2,6 +2,7 @@
 
 namespace App\model\Frontend;
 
+use App\model\admin\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Order_Details extends Model
@@ -17,4 +18,10 @@ class Order_Details extends Model
         'single_price',
         'total_price',
     ];
+    
+    // belongs to product.. 
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

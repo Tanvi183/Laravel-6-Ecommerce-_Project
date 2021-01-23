@@ -41,13 +41,14 @@ Route::resource('coupon', 'Coupon\CouponController');
         // Newslatters =======
 Route::resource('newslatter', 'Newslatter\NewslatterController');
         // Product =======
-Route::resource('product', 'Product\ProductController');
-        // Get subcategory by ajax ...
+// Get subcategory by ajax ...
 Route::get('product/subcategory/get', 'product\productController@subCategoryGet')->name('product.sub.get');
-        // Product Active ....
+// Product Active ....
 Route::get('product/Active/{id}', 'Product\ProductController@active')->name('product.active');
-        // Product Inactive ....
+// Product Inactive ....
 Route::get('product/inctive/{id}', 'Product\ProductController@inactive')->name('product.inactive');
+Route::resource('product', 'Product\ProductController');
+
         // PostCategory =======
 Route::resource('postCategory', 'Blog\CategoryController');
         // BlogPost =======
@@ -56,7 +57,17 @@ Route::resource('blogPost', 'Blog\PostController');
 Route::get('blogPost/Active/{id}', 'Blog\PostController@active')->name('blogPost.active');
         // BlogPost Inactive ....
 Route::get('blogPost/inctive/{id}', 'Blog\PostController@inctive')->name('blogPost.inctive');
+        //============== Admin Order Route ==============//
+Route::get('orders/confirm/view', 'Order\OrderController@confirmView')->name('orders.confirm.view');
+Route::get('orders/progress/view', 'Order\OrderController@progressView')->name('orders.progress.view');
+Route::get('orders/delivery/view', 'Order\OrderController@deliveryView')->name('orders.delivery.view');
+Route::get('orders/cancle/view', 'Order\OrderController@cancleView')->name('orders.cancle.view');
+Route::get('orders/accept/{id}', 'Order\OrderController@orderAccept')->name('orders.accept');
+Route::get('orders/progress/{id}', 'Order\OrderController@orderProgress')->name('orders.progressStatus');
+Route::get('orders/delivery/{id}', 'Order\OrderController@orderDelivered')->name('orders.deliveryStatus');
+Route::get('orders/cancle/{id}', 'Order\OrderController@orderCancle')->name('orders.cancle');
 
+Route::resource('pending/orders', 'Order\OrderController');
 });
 
 
@@ -70,25 +81,24 @@ Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.ne
 Route::get('/wishlist', 'Frontend\wishlistController@wishlist')->name('customer.wishlist');
 Route::get('show/wishlist/list', 'Frontend\WishlistController@showWishlist')->name('user.wishlist');
 
-//======= Add To Cart Route Here ==========//
-
+        // Add To Cart Route Here...
 Route::get('add/to/card/{id}', 'Frontend\AddCartController@addtoCart'); //Ajax
 Route::post('add/cart/product', 'Frontend\AddCartController@addCart')->name('add.to.cart'); //Page Load
 Route::get('show/cart', 'Frontend\AddCartController@showCart')->name('cart.product.list'); //show Cart
 Route::get('/cart/product/remove/{rowId}', 'Frontend\AddCartController@removeCart')->name('cart.product.remove'); //Remove Cart
 Route::post('/cart/product/update/{id}', 'Frontend\AddCartController@updateCart')->name('cart.product.update');
 Route::post('insert/prodcut/cart', 'Frontend\AddCartController@insertCart')->name('product.cart.insert');
-        //checkout
+        //checkout...
 Route::get('user/cheack/out', 'Frontend\AddCartController@checkOut')->name('user.checkout');
-        //Apply Coupon
+        //Apply Coupon...
 Route::post('user/apply/coupon', 'Frontend\AddCartController@coupon')->name('apply.coupon');
 Route::get('user/remove/coupon', 'Frontend\AddCartController@couponRemove')->name('user.coupons.remove');
         //Payment Getway
 Route::get('product/payment/page', 'Frontend\PaymentController@index')->name('payment.page');
 Route::post('product/payment/process', 'Frontend\PaymentController@process')->name('payment.process');
-Route::post('stripe/charge/payment', 'Frontend\PaymentController@stripe')->name('stripe.charge');
+Route::post('stripe/charge/payment', 'Frontend\PaymentController@stripePayment')->name('stripe.charge');
 
-        //product Details
+        //product Details...
 Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');
 Route::get('cart/product/view/{id}','Frontend\ProductController@productView');    //Product view
 Route::get('products/category/{id}/{catname}','Frontend\ProductController@categoryProducts')->name('products.category');

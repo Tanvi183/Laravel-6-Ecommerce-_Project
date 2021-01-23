@@ -16,4 +16,5 @@ class Shipping extends Model
         'ship_city',
         'ship_post_code',
     ];
+
 }

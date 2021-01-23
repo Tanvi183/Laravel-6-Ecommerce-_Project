@@ -85,7 +85,7 @@
 										<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
 											@if(Session::has('coupon'))
 												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Coupon : ({{   Session::get('coupon')['name'] }})</div>
-												<span class="cart_item_text">$  {{ Session::get('coupon')['discount'] }}</span>
+												<span class="cart_item_text">$  {{ Session::get('coupon')['amount'] }}</span>
 											@endif
 										</div>
 
@@ -102,17 +102,13 @@
 				
 										@if (Session::has('coupon'))
 											<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
-												@if(Session::has('coupon'))
-													<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Shipping Charge :  </div>
-													<span class="cart_item_text">$ {{ $coupon/100 * $charge }}</span>
-												@endif
+												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Shipping Charge :  </div>
+												<span class="cart_item_text">$ {{ $coupon/100 * $charge }}</span>
 											</div>
 										@else
 											<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
-												@if(Session::has('coupon'))
-													<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Shipping Charge :  </div>
-													<span class="cart_item_text">$ {{ $cartTotal/100 * $charge }}</span>
-												@endif
+												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Shipping Charge :  </div>
+												<span class="cart_item_text">$ {{ $cartTotal/100 * $charge }}</span>
 											</div>
 										@endif
 
@@ -123,37 +119,29 @@
 											$vat = $vatId->vat;
 										@endphp
 				
-										@if (session::has('coupon'))
+										@if (Session::has('coupon'))
 											<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
-												@if(Session::has('coupon'))
-													<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">VAT :  </div>
-													<span class="cart_item_text">$ {{ $coupon/100 * $vat }}</span>
-												@endif
+												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">VAT :  </div>
+												<span class="cart_item_text">$ {{ $coupon/100 * $vat }}</span>
 											</div>
 										@else
 											<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
-												@if(Session::has('coupon'))
-													<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">VAT :  </div>
-													<span class="cart_item_text">$ {{ $cartTotal/100 * $vat }}</span>
-												@endif
+												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">VAT :  </div>
+												<span class="cart_item_text">$ {{ $cartTotal/100 * $vat }}</span>
 											</div>
 										@endif
 										
 										<!-- Total Amount -->
 				
-										@if (session::has('coupon'))
+										@if (Session::has('coupon'))
 											<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
-												@if(Session::has('coupon'))
-													<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Total Amount :  </div>
-													<span class="cart_item_text">$ {{ $coupon + $coupon/100 * $charge  + $coupon/100 * $vat}}</span>
-												@endif
+												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Total Amount :  </div>
+												<span class="cart_item_text">$ {{ $coupon + $coupon/100 * $charge  + $coupon/100 * $vat}}</span>
 											</div>
 										@else
 											<div class="cart_item_name cart_info_col" style="margin: 0 auto; overflow: hidden; padding-top: 15px;">
-												@if(Session::has('coupon'))
-													<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Total Amount :  </div>
-													<span class="cart_item_text">$ {{ $cartTotal + $cartTotal/100 * $charge +$cartTotal/100 * $vat}}</span>
-												@endif
+												<div class="cart_item_title" style="float: left; font-weight: 500; color: rgb(0 0 0 / 68%); font-size: 17px;">Total Amount :  </div>
+												<span class="cart_item_text">$ {{ $cartTotal + $cartTotal/100 * $charge +$cartTotal/100 * $vat}}</span>
 											</div>
 										@endif
 									</div>
@@ -177,7 +165,39 @@
                             </div>
 
                             <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
+							<div id="card-errors" role="alert"></div>
+
+							{{-- <input type="hidden" value="{{ Cart::Subtotal() }}" name="sub_total"> --}}
+							<!-- Shipping Charge -->
+							@if (Session::has('coupon'))
+								<input type="hidden" value="{{ $coupon/100 * $charge }}" name="shipping_charge">
+							@else
+								<input type="hidden" value="{{ $cartTotal/100 * $charge }}" name="shipping_charge">
+							@endif
+
+							<!-- Vat -->
+							@if (Session::has('coupon'))
+								<input type="hidden" value="{{ $coupon/100 * $vat }}" name="vat">
+							@else
+								<input type="hidden" value="{{ $cartTotal/100 * $vat }}" name="vat">
+							@endif
+
+							<!-- Total -->
+							@if (Session::has('coupon'))
+								<input type="hidden" value="{{ $coupon + $coupon/100 * $charge  + $coupon/100 * $vat}}" name="total">
+							@else
+								<input type="hidden" value="{{ $cartTotal + $cartTotal/100 * $charge +$cartTotal/100 * $vat}}" name="total">
+							@endif
+
+							<!-- Shipping Info -->
+							<input type="hidden" value="{{ $payment['name'] }}" name="ship_name">
+							<input type="hidden" value="{{ $payment['email'] }}" name="ship_email">
+							<input type="hidden" value="{{ $payment['phone_number'] }}" name="ship_phone">
+							<input type="hidden" value="{{ $payment['address'] }}" name="ship_address">
+							<input type="hidden" value="{{ $payment['city'] }}" name="ship_city">
+							<input type="hidden" value="{{ $payment['post_code'] }}" name="ship_post_code">
+							<input type="hidden" value="{{ $payment['payment'] }}" name="payment_type">
+
 						  </div><br><br>
 						  <button class="btn btn-info">Pay Now</button>
                         </form>

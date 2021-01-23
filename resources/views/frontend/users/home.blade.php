@@ -1,28 +1,36 @@
 @extends('frontend.app')
 @section('content')
-
+@php
+    $orders = App\model\Frontend\Order::where('user_id', Auth::id())->orderBy('id', 'DESC')->get();
+@endphp
     <div class="contact_form">
         <div class="container">
             <div class="row">
                 <div class="col-8 card">
-                    <table class="table table-response">
-                        <thead class="thead-dark">
-                          <tr>
-                            <th scope="col">Serial</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
-                    </table>
+                  <table class="table table-response">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Payment ID</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status Code</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($orders as $item)
+                        <tr>
+                          <th>{{ $item->payment_type }}</th>
+                          <td>{{ $item->payment_id }}</td>
+                          <td>{{ $item->total }}</td>
+                          <td>{{ $item->date }}</td>
+                          <td>{{ $item->status_code }}</td>
+                          <td><a href="" class="btn btn-sm btn-warning"><i class="fa fa-eye" title="View"></i></a></td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
                 <div class="col-4">
                     <div class="card" style="width: 18rem;">

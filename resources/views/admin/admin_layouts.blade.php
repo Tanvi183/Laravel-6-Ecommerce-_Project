@@ -106,14 +106,28 @@
             <a href="#" class="sl-menu-link">
               <div class="sl-menu-item">
                 <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
-                <span class="menu-item-label">Post</span>
+                <span class="menu-item-label">Posts</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
               </div><!-- menu-item -->
             </a><!-- sl-menu-link -->
             <ul class="sl-menu-sub nav flex-column">
-              <li class="nav-item"><a href="{{ route('admin.postCategory.index') }}" class="nav-link">Post_Category</a></li>
+              <li class="nav-item"><a href="{{ route('admin.postCategory.index') }}" class="nav-link">Post Category</a></li>
               <li class="nav-item"><a href="{{ route('admin.blogPost.create') }}" class="nav-link">Add Blog Post</a></li>
               <li class="nav-item"><a href="{{ route('admin.blogPost.index') }}" class="nav-link">All Blog Post</a></li>
+            </ul>
+            <a href="#" class="sl-menu-link">
+              <div class="sl-menu-item">
+                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+                <span class="menu-item-label">Orders</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+              </div><!-- menu-item -->
+            </a><!-- sl-menu-link -->
+            <ul class="sl-menu-sub nav flex-column">
+              <li class="nav-item"><a href="{{ route('admin.orders.index') }}" class="nav-link">Pending Order</a></li>
+              <li class="nav-item"><a href="{{ route('admin.orders.confirm.view') }}" class="nav-link">Confirm Order</a></li>
+              <li class="nav-item"><a href="{{ route('admin.orders.progress.view') }}" class="nav-link">Delivery Progress</a></li>
+              <li class="nav-item"><a href="{{ route('admin.orders.delivery.view') }}" class="nav-link">Delivery Success</a></li>
+              <li class="nav-item"><a href="{{ route('admin.orders.cancle.view') }}" class="nav-link">Cancle Order</a></li>
             </ul>
             <a href="#" class="sl-menu-link">
               <div class="sl-menu-item">
@@ -451,6 +465,8 @@
 <!--- Sweet-Alert --->
 <script src="{{ asset('public/backend/lib/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
 <script src="{{ asset('public/backend/lib/sweetalert2/sweet-alert.init.js')}}"></script>
+
+
 <script type="text/javascript">
   function deleteItem(id){
     const swalWithBootstrapButtons = Swal.mixin({
@@ -485,9 +501,8 @@
           })
   }
 </script>
-<!--- Sweet-Alert --->
 
-     <!-- ########## START: Sweetalert ########## -->
+     <!----- START: Sweetalert ----->
      <script src="{{ asset('public/backend/lib/sweetalert/sweetalert.min.js')}}"></script>
      <script>  
          $(document).on("click", "#delete", function(e){
@@ -509,6 +524,7 @@
                 });
             });
     </script>
-    <!-- ########## END: Sweetalert ########## -->
+    <!----- END: Sweetalert--- -->
+
   </body>
 </html>
