@@ -109,9 +109,9 @@ class ProductController extends Controller
             Image::make($image_two)->resize(230, 300)->save('public/backend/media/product/' . $image_two_name);
             $product->image_two = $image_two_name;
             // Image One Upload...
-            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
-            $product->image_one = $image_one_name;
+            $image_three_name = hexdec(uniqid()) . '.' . $image_three->getClientOriginalExtension();
+            Image::make($image_three)->resize(230, 300)->save('public/backend/media/product/' . $image_three_name);
+            $product->image_three = $image_three_name;
             $product->save();
         }
         // Image One & Two
@@ -133,9 +133,9 @@ class ProductController extends Controller
             Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
             $product->image_one = $image_one_name;
             // Image One Upload...
-            $image_one_name = hexdec(uniqid()) . '.' . $image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize(230, 300)->save('public/backend/media/product/' . $image_one_name);
-            $product->image_one = $image_one_name;
+            $image_three_name = hexdec(uniqid()) . '.' . $image_three->getClientOriginalExtension();
+            Image::make($image_three)->resize(230, 300)->save('public/backend/media/product/' . $image_three_name);
+            $product->image_three = $image_three_name;
             $product->save();
         }       
         // image One

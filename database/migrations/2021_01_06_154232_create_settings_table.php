@@ -15,13 +15,14 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('shop_name')->default('MGi');
+            $table->string('logo')->nullable();
+            $table->string('phone1')->default('+88 01837 889646');
+            $table->string('phone2')->nullable();
+            $table->string('email')->default('mneshat7@gmail.com');
+            $table->string('address')->nullable();
             $table->integer('vat')->nullable();
             $table->integer('shipping_charge')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('shop_name')->default('MGi');
-            $table->string('email')->default('mneshat7@gmail.com');
-            $table->string('phone')->default('+88 01837 889646');
-            $table->string('address')->nullable();
             $table->string('facebook_url')->nullable();
             $table->string('twitter_url')->nullable();
             $table->string('youtube_url')->nullable();

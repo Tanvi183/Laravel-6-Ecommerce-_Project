@@ -46,10 +46,10 @@
                 <!-- Char. Item -->
                 <div class="col-lg-3 col-md-6 char_col">
                     
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start btn" data-toggle="modal" data-target="#exampleModal">
                         <div class="char_icon"><img src="{{ asset('public/frontend/images/char_1.png') }}" alt=""></div>
                         <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
+                            <div class="char_title">Traking Order</div>
                             <div class="char_subtitle">from $50</div>
                         </div>
                     </div>

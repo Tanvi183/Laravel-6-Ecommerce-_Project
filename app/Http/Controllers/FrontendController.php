@@ -6,6 +6,7 @@ use App\model\admin\Brand;
 use App\model\admin\Product;
 use Illuminate\Http\Request;
 use App\model\admin\Category;
+use App\model\Frontend\Order;
 use phpDocumentor\Reflection\Types\Null_;
 
 class FrontendController extends Controller
@@ -48,6 +49,26 @@ class FrontendController extends Controller
         return view('frontend.pages.index',compact('main_slide', 'hot_deal', 'featured', 'trends', 'best_rated',
             'category', 'mid_slider', 'discout_product', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet'
         ));
+    }
+
+    public function trakOrder(Request $request)
+    {
+        $code = $request->status_code;
+
+        $check = Order::where('status_code', $code)->first();
+
+        if ($check) {
+            return view('frontend.pages.order.track_order', compact('check'));
+        }else{
+            // Notification
+            $notification=array(
+                'messege'=>'Your Order Code Invalid !',
+                'alert-type'=>'error'
+            );
+            // Redirect
+            return redirect()->back()->with($notification);
+        }
+
     }
 
 }

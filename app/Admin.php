@@ -23,6 +23,21 @@ class Admin extends Authenticatable
             'email', 
             'password',
             'phone',
+            'image',
+            'category',
+            'coupon',
+            'product',
+            'blog',
+            'order',
+            'report',
+            'user_role',
+            'return_order',
+            'contact_message',
+            'product_comment',
+            'product_stock',
+            'setting',
+            'other',
+            'user_type'
         ];
 
         protected $hidden = [

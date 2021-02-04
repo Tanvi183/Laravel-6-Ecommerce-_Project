@@ -57,17 +57,48 @@ Route::resource('blogPost', 'Blog\PostController');
 Route::get('blogPost/Active/{id}', 'Blog\PostController@active')->name('blogPost.active');
         // BlogPost Inactive ....
 Route::get('blogPost/inctive/{id}', 'Blog\PostController@inctive')->name('blogPost.inctive');
-        //============== Admin Order Route ==============//
-Route::get('orders/confirm/view', 'Order\OrderController@confirmView')->name('orders.confirm.view');
-Route::get('orders/progress/view', 'Order\OrderController@progressView')->name('orders.progress.view');
-Route::get('orders/delivery/view', 'Order\OrderController@deliveryView')->name('orders.delivery.view');
-Route::get('orders/cancle/view', 'Order\OrderController@cancleView')->name('orders.cancle.view');
+
+//**============================ Admin Order Route ====================================**//
+Route::get('orders/pending/list', 'Order\OrderController@index')->name('orders.index');
+Route::get('orders/confirm/list', 'Order\OrderController@confirmIndex')->name('orders.confirm.index');
+Route::get('orders/progress/view', 'Order\OrderController@progressIndex')->name('orders.progress.index');
+Route::get('orders/delivery/view', 'Order\OrderController@deliveryIndex')->name('orders.delivery.index');
+Route::get('orders/cancle/view', 'Order\OrderController@cancleIndex')->name('orders.cancle.index');
+Route::get('orders/show/view/{id}', 'Order\OrderController@show')->name('orders.show');
 Route::get('orders/accept/{id}', 'Order\OrderController@orderAccept')->name('orders.accept');
+Route::get('orders/cancle/{id}', 'Order\OrderController@orderCancle')->name('orders.cancle');
 Route::get('orders/progress/{id}', 'Order\OrderController@orderProgress')->name('orders.progressStatus');
 Route::get('orders/delivery/{id}', 'Order\OrderController@orderDelivered')->name('orders.deliveryStatus');
-Route::get('orders/cancle/{id}', 'Order\OrderController@orderCancle')->name('orders.cancle');
+        // Return order
+Route::get('orders/return/list', 'OrderReturn\ReturnController@orderReturn')->name('orders.return.index');
+Route::get('orders/return/view/{id}', 'OrderReturn\ReturnController@returnShow')->name('orders.return.view');
+Route::get('orders/return/approve/{id}', 'OrderReturn\ReturnController@returnApprove')->name('return.orders.approve');
+Route::get('all/return/orders/list', 'OrderReturn\ReturnController@allReturn')->name('orders.all.return.index');
+        //Site Settings
+Route::get('site/settings/index', 'Setting\SettingController@siteSetting')->name('site.setting.index');
+Route::PUT('site/settings/update', 'Setting\SettingController@siteSettingUpdate')->name('site.setting.update');
+Route::get('seo/settings', 'Setting\SettingController@seoEdit')->name('seo.index');
+Route::post('seo/settings/update', 'Setting\SettingController@seoUpdate')->name('seo.update');
+        //Order Reports
+Route::get('today/order/report', 'Report\ReportController@todayOrder')->name('report.today.order');
+Route::get('today/delivery/report', 'Report\ReportController@todayDelivery')->name('report.today.delivery');
+Route::get('this/month/report', 'Report\ReportController@reportMonth')->name('report.this.month');
+Route::get('this/year/report', 'Report\ReportController@reportYear')->name('report.this.year');
+Route::get('search/report/index', 'Report\ReportController@searchIndex')->name('report.search.index');
+        //Search Reports
+Route::post('search/date/report', 'Report\ReportController@dateSeach')->name('report.date.search');
+Route::post('search/month/report', 'Report\ReportController@monthSearch')->name('report.month.search');
+Route::post('search/year/report', 'Report\ReportController@yearSearch')->name('report.year.search');
+Route::post('search/between/report', 'Report\ReportController@betweenSearch')->name('report.between.search');
 
-Route::resource('pending/orders', 'Order\OrderController');
+//**============================ Admin User Role Route ====================================**//
+Route::get('all/user/list', 'Auth\UserRoleController@index')->name('user.all.list');
+Route::get('create/new/subadmin', 'Auth\UserRoleController@Create')->name('create.new.user');
+Route::post('create/new/subadmin/store', 'Auth\UserRoleController@Store')->name('new.user.store');
+Route::get('sub/admin/edit/{id}', 'Auth\UserRoleController@userEdit')->name('user.edit');
+Route::PUT('subadmin/update/{id}', 'Auth\UserRoleController@userUpdate')->name('new.user.update');
+Route::delete('subadmin/delete/{id}', 'Auth\UserRoleController@userDestroy')->name('user.destroy');
+
 });
 
 
@@ -75,6 +106,7 @@ Route::resource('pending/orders', 'Order\OrderController');
 //===============================================================================================================//
         // Frontend =======
 Route::get('/','FrontendController@index')->name('index');
+Route::post('tracking/order','FrontendController@trakOrder')->name('tracking.order.index');
         // Newsletter =======
 Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.newsletter');
         // Wishlist
@@ -97,7 +129,6 @@ Route::get('user/remove/coupon', 'Frontend\AddCartController@couponRemove')->nam
 Route::get('product/payment/page', 'Frontend\PaymentController@index')->name('payment.page');
 Route::post('product/payment/process', 'Frontend\PaymentController@process')->name('payment.process');
 Route::post('stripe/charge/payment', 'Frontend\PaymentController@stripePayment')->name('stripe.charge');
-
         //product Details...
 Route::get('product/details/{product_code}/{product_name}','Frontend\ProductController@productDetails');
 Route::get('cart/product/view/{id}','Frontend\ProductController@productView');    //Product view
@@ -108,5 +139,13 @@ Route::get('blog/show/all', 'Frontend\BlogController@Blog')->name('all.blog.show
 Route::get('blog/language/english', 'Frontend\BlogController@BlogEng')->name('language.english');
 Route::get('blog/language/Bangla', 'Frontend\BlogController@BlogBan')->name('language.bangla');
 
+        //Return Order
+Route::get('single/order/view/{id}', 'Frontend\OrderController@singleOrder')->name('orders.show.single');
+Route::get('return/order/{id}', 'Frontend\OrderController@returnOrder')->name('this.order.return');
 
+        //Comment
+Route::post('/comment/store', 'Frontend\CommentController@store')->name('comment.add');
+Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
+Route::get('/delete/comment/{id}', 'Frontend\CommentController@destroyComment')->name('comment.delete');
+        
 

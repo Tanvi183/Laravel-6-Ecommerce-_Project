@@ -1,3 +1,7 @@
+@php
+    $Setting = App\model\admin\Setting::select('logo','shop_name')->first();
+@endphp
+
 <div class="header_main">
     <div class="container">
         <div class="row">
@@ -5,7 +9,19 @@
             <!-- Logo -->
             <div class="col-lg-2 col-sm-3 col-3 order-1">
                 <div class="logo_container">
-                    <div class="logo"><a href="{{ url('/') }}">OneTech</a></div>
+                    <div class="logo"><a href="{{ url('/') }}">
+                        @if ($Setting->logo)
+                            {{ $Setting->logo }}
+                        @elseif($Setting->shop_name)
+                            {{ $Setting->shop_name }}
+                        @else
+                            @if (Session::get('language') == 'bangla')
+                                ওয়ানটেক
+                            @else
+                                OneTech
+                            @endif
+                        @endif
+                    </a></div>
                 </div>
             </div>
 

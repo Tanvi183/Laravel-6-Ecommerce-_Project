@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\order;
+namespace App\Http\Controllers\Admin\Order;
 
 use Illuminate\Http\Request;
 use App\model\Frontend\Order;
@@ -15,24 +15,45 @@ class OrderController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     // Pending Order.. 
+
+    // Pending Order view.. 
     public function index()
     {
         $orders = Order::where('status', 0)->orderBy('id','ASC')->get();
         return view('admin.orders.order_index', compact('orders'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Confirm Order view
+    public function confirmIndex()
+    {
+        $orders = Order::where('status', 1)->orderBy('id','ASC')->get();
+        return view('admin.orders.order_confirmOrder', compact('orders'));
+    }
+
+    //Progress view
+    public function progressIndex()
+    {
+        $progressOrder = Order::where('status', 2)->orderBy('id','ASC')->get();
+        return view('admin.orders.order_progress', compact('progressOrder'));
+    }
+
+    //Delivery view
+
+    public function deliveryIndex()
+    {
+        $delivery = Order::where('status', 3)->orderBy('id','ASC')->get();
+        return view('admin.orders.order_delivered', compact('delivery'));
+    }
+
+    // Cancle View
+    public function cancleIndex()
+    {
+        $orders = Order::where('status', 4)->orderBy('id','ASC')->get();
+        return view('admin.orders.order_cancle', compact('orders'));
+    }
+
+
+    // Order Show
     public function show($id)
     {
         $order = order::where('id', $id)->first();
@@ -90,7 +111,7 @@ class OrderController extends Controller
             'alert-type'=>'success'
         );
         // Redirect
-        return redirect()->route('admin.orders.confirm.view')->with($notification);
+        return redirect()->route('admin.orders.confirm.index')->with($notification);
     }
 
     // Order Delievered.. 
@@ -104,37 +125,9 @@ class OrderController extends Controller
             'alert-type' => 'success',
         );
         // Redirect
-        return redirect()->route('admin.orders.progress.view')->with($notification);
-    }
-    
-
-    // Confirm Order view
-    public function confirmView()
-    {
-        $orders = Order::where('status', 1)->orderBy('id','ASC')->get();
-        return view('admin.orders.order_confirmOrder', compact('orders'));
+        return redirect()->route('admin.orders.progress.index')->with($notification);
     }
 
-    // Cancle View
-    public function cancleView()
-    {
-        $orders = Order::where('status', 4)->orderBy('id','ASC')->get();
-        return view('admin.orders.order_cancle', compact('orders'));
-    }
-
-    //Progress view
-    public function progressView()
-    {
-        $progressOrder = Order::where('status', 2)->orderBy('id','ASC')->get();
-        return view('admin.orders.order_progress', compact('progressOrder'));
-    }
-
-    //Delivery view
-
-    public function deliveryView()
-    {
-        $delivery = Order::where('status', 3)->orderBy('id','ASC')->get();
-        return view('admin.orders.order_delivered', compact('delivery'));
-    }
 
 }
+

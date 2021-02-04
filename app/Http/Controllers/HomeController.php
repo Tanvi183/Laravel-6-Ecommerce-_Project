@@ -29,7 +29,8 @@ class HomeController extends Controller
         return view('frontend.users.home');
     }
 
-    public function changePassword(){
+    public function changePassword()
+    {
         return view('auth.changepassword');
     }
 

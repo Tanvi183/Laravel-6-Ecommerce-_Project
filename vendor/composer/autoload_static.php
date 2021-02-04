@@ -103,6 +103,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Stripe\\' => 7,
+            'Spatie\\Honeypot\\' => 16,
         ),
         'R' => 
         array (
@@ -142,6 +143,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
             'League\\Event\\' => 13,
             'League\\CommonMark\\' => 18,
             'Lcobucci\\JWT\\' => 13,
+            'Laravelista\\Comments\\' => 21,
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\Socialite\\' => 18,
@@ -342,6 +344,10 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
+        'Spatie\\Honeypot\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-honeypot/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -426,6 +432,10 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'Lcobucci\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Laravelista\\Comments\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelista/comments/src',
         ),
         'Laravel\\Ui\\' => 
         array (
@@ -554,6 +564,13 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Parsedown' => 
+            array (
+                0 => __DIR__ . '/..' . '/erusev/parsedown',
+            ),
+        ),
         'M' => 
         array (
             'Mockery' => 
@@ -583,6 +600,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Http\\Controllers\\Admin\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Admin\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/LoginController.php',
         'App\\Http\\Controllers\\Admin\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\Admin\\Auth\\UserRoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/UserRoleController.php',
         'App\\Http\\Controllers\\Admin\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Admin\\Blog\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Blog/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\Blog\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Blog/PostController.php',
@@ -590,7 +608,10 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Http\\Controllers\\Admin\\Category\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Category/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\Coupon\\CouponController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Coupon/CouponController.php',
         'App\\Http\\Controllers\\Admin\\Newslatter\\NewslatterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Newslatter/NewslatterController.php',
+        'App\\Http\\Controllers\\Admin\\OrderReturn\\ReturnController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OrderReturn/ReturnController.php',
+        'App\\Http\\Controllers\\Admin\\Order\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Order/OrderController.php',
         'App\\Http\\Controllers\\Admin\\Product\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Product/ProductController.php',
+        'App\\Http\\Controllers\\Admin\\Setting\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Setting/SettingController.php',
         'App\\Http\\Controllers\\Admin\\Subcategory\\SubCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Subcategory/SubCategoryController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\GoogleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/GoogleController.php',
@@ -603,6 +624,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Http\\Controllers\\Frontend\\AddCartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/AddCartController.php',
         'App\\Http\\Controllers\\Frontend\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/BlogController.php',
         'App\\Http\\Controllers\\Frontend\\NewsletterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/NewsletterController.php',
+        'App\\Http\\Controllers\\Frontend\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/OrderController.php',
         'App\\Http\\Controllers\\Frontend\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/PaymentController.php',
         'App\\Http\\Controllers\\Frontend\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ProductController.php',
         'App\\Http\\Controllers\\Frontend\\WishlistController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/WishlistController.php',
@@ -622,6 +644,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\model\\Frontend\\Comment' => __DIR__ . '/../..' . '/app/model/Frontend/Comment.php',
         'App\\model\\Frontend\\Order' => __DIR__ . '/../..' . '/app/model/Frontend/Order.php',
         'App\\model\\Frontend\\Order_Details' => __DIR__ . '/../..' . '/app/model/Frontend/Order_Details.php',
         'App\\model\\Frontend\\Shipping' => __DIR__ . '/../..' . '/app/model/Frontend/Shipping.php',
@@ -633,9 +656,9 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\model\\admin\\Newslatter' => __DIR__ . '/../..' . '/app/model/admin/Newslatter.php',
         'App\\model\\admin\\PostCategory' => __DIR__ . '/../..' . '/app/model/admin/PostCategory.php',
         'App\\model\\admin\\Product' => __DIR__ . '/../..' . '/app/model/admin/Product.php',
+        'App\\model\\admin\\Seo' => __DIR__ . '/../..' . '/app/model/admin/Seo.php',
         'App\\model\\admin\\Setting' => __DIR__ . '/../..' . '/app/model/admin/Setting.php',
         'App\\model\\admin\\Sub_Category' => __DIR__ . '/../..' . '/app/model/admin/Sub_Category.php',
-        'App\\test' => __DIR__ . '/../..' . '/app/test.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'BrandsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BrandsTableSeeder.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
@@ -2506,6 +2529,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'Illuminate\\View\\FileViewFinder' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/FileViewFinder.php',
         'Illuminate\\View\\Middleware\\ShareErrorsFromSession' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php',
         'Illuminate\\View\\View' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/View.php',
+        'Illuminate\\View\\ViewException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewException.php',
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
@@ -2784,6 +2808,16 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
+        'Laravelista\\Comments\\Comment' => __DIR__ . '/..' . '/laravelista/comments/src/Comment.php',
+        'Laravelista\\Comments\\CommentController' => __DIR__ . '/..' . '/laravelista/comments/src/CommentController.php',
+        'Laravelista\\Comments\\CommentControllerInterface' => __DIR__ . '/..' . '/laravelista/comments/src/CommentControllerInterface.php',
+        'Laravelista\\Comments\\CommentPolicy' => __DIR__ . '/..' . '/laravelista/comments/src/CommentPolicy.php',
+        'Laravelista\\Comments\\Commentable' => __DIR__ . '/..' . '/laravelista/comments/src/Commentable.php',
+        'Laravelista\\Comments\\Commenter' => __DIR__ . '/..' . '/laravelista/comments/src/Commenter.php',
+        'Laravelista\\Comments\\Events\\CommentCreated' => __DIR__ . '/..' . '/laravelista/comments/src/Events/CommentCreated.php',
+        'Laravelista\\Comments\\Events\\CommentDeleted' => __DIR__ . '/..' . '/laravelista/comments/src/Events/CommentDeleted.php',
+        'Laravelista\\Comments\\Events\\CommentUpdated' => __DIR__ . '/..' . '/laravelista/comments/src/Events/CommentUpdated.php',
+        'Laravelista\\Comments\\ServiceProvider' => __DIR__ . '/..' . '/laravelista/comments/src/ServiceProvider.php',
         'Lcobucci\\JWT\\Builder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Builder.php',
         'Lcobucci\\JWT\\Claim' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim.php',
         'Lcobucci\\JWT\\Claim\\Basic' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Basic.php',
@@ -3832,6 +3866,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
@@ -4565,6 +4600,13 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\Honeypot\\EncryptedTime' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/EncryptedTime.php',
+        'Spatie\\Honeypot\\HoneypotServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/HoneypotServiceProvider.php',
+        'Spatie\\Honeypot\\HoneypotViewComposer' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/HoneypotViewComposer.php',
+        'Spatie\\Honeypot\\ProtectAgainstSpam' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/ProtectAgainstSpam.php',
+        'Spatie\\Honeypot\\SpamDetected' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/SpamDetected.php',
+        'Spatie\\Honeypot\\SpamResponder\\BlankPageResponder' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/SpamResponder/BlankPageResponder.php',
+        'Spatie\\Honeypot\\SpamResponder\\SpamResponder' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/SpamResponder/SpamResponder.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Stripe\\Account' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Account.php',
         'Stripe\\AccountLink' => __DIR__ . '/..' . '/stripe/stripe-php/lib/AccountLink.php',

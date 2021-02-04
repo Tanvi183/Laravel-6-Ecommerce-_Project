@@ -10,23 +10,45 @@
                   <table class="table table-response">
                     <thead class="thead-dark">
                       <tr>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Payment ID</th>
-                        <th scope="col">Total</th>
+                        <th scope="col">PaymentType</th>
+                        <th scope="col">Amount</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Status Code</th>
+                        <th scope="col">Return</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($orders as $item)
                         <tr>
-                          <th>{{ $item->payment_type }}</th>
-                          <td>{{ $item->payment_id }}</td>
+                          <td>{{ $item->payment_type }}</td>
                           <td>{{ $item->total }}</td>
                           <td>{{ $item->date }}</td>
-                          <td>{{ $item->status_code }}</td>
-                          <td><a href="" class="btn btn-sm btn-warning"><i class="fa fa-eye" title="View"></i></a></td>
+                          <td>
+                            @if($item->return_order == 0)
+                                <span class="badge badge-warning">No Request</span>
+                            @elseif($item->return_order == 1)
+                                <span class="badge badge-info">Pending</span>
+                            @elseif($item->return_order == 2) 
+                                <span class="badge badge-success">Success</span>
+                            @endif
+                          </td>
+                          <td>
+                            @if($item->status == 0)
+                                <span class="badge badge-warning">Pending</span>
+                            @elseif($item->status == 1)
+                                <span class="badge badge-info">Payment Accept</span>
+                            @elseif($item->status == 2) 
+                                    <span class="badge badge-info">Progress </span>
+                            @elseif($item->status == 3)  
+                                <span class="badge badge-success">Delevered </span>
+                            @else
+                                <span class="badge badge-danger">Cancel </span>
+                            @endif
+                          </td>
+                          <td>
+                            <a href="{{ route('orders.show.single', $item->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-eye" title="View"></i></a>
+                          </td>
                         </tr>
                       @endforeach
                     </tbody>

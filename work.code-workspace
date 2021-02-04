@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "..\\laravel8"
+		},
+		{
+			"path": "..\\blog1"
 		}
 	],
 	"settings": {}

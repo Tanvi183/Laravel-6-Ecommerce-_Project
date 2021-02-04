@@ -1,5 +1,6 @@
 @extends('admin.admin_layouts')
 @section('admin_content')
+
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
       <a class="breadcrumb-item" href="{{ route('admin.home') }}">Deshboard</a>

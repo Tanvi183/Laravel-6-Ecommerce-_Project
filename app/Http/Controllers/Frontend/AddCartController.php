@@ -196,7 +196,7 @@ class AddCartController extends Controller
             $notification=array(
                 'messege'=>'Coupon Applied Successfully',
                 'alert-type'=>'success'
-                );
+            );
             return Redirect()->back()->with($notification);
         }else{
             // Notification...

@@ -17,7 +17,12 @@
         <div class="home_background parallax-window" data-parallax="scroll" data-image-src=""><img src="{{ asset('/public/frontend/images/shop_background.jpg') }}" alt=""></div>
 		<div class="home_overlay"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
-			<h2 class="home_title">Blog Post</h2>
+            @if (Session::get('language') == 'bangla')
+                <h2 class="home_title">ব্লগ পোস্ট</h2>
+            @else
+                <h2 class="home_title">Blog Post</h2>
+            @endif
+			
 		</div>
 	</div>
 
@@ -33,15 +38,15 @@
                             <!-- Blog post -->
                             <div class="blog_post">
                                 <div class="blog_image" style="background-image:url({{ asset('/public/backend/media/post/' .$item->image) }})"></div>
-                                @if (Session::get('language') == 'english')
-                                    <div class="blog_text">{{ $item->post_title_en }}</div>
-                                @else
+                                @if (Session::get('language') == 'bangla')
                                     <div class="blog_text">{{ $item->post_title_bn }}</div>
-                                @endif
-                                @if (Session::get('language') == 'english')
-                                    <div class="blog_button"><a href="">Continue Reading</a></div>
                                 @else
+                                    <div class="blog_text">{{ $item->post_title_en }}</div>
+                                @endif
+                                @if (Session::get('language') == 'bangla')
                                     <div class="blog_button"><a href="">পড়া চালিয়ে যান</a></div>
+                                @else
+                                    <div class="blog_button"><a href="">Continue Reading</a></div>
                                 @endif
                             </div>
 						@endforeach
