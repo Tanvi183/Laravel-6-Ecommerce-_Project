@@ -6,7 +6,9 @@ use App\model\admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\model\admin\Brand;
 use App\model\admin\Category;
+use App\model\admin\Sub_Category;
 // use Cart;
 use Response;
 
@@ -70,6 +72,15 @@ class ProductController extends Controller
         $brands         = product::where('subcategory_id', $id)->select('brand_id')->groupBy('brand_id')->get();
         $categories    = Category::select('id', 'category_name')->get();
         return view('frontend.pages.subcategory_product', compact('subcatname','subcatProduct','categories','brands'));
+    }
+
+    public function productShop()
+    {
+        $brands        = Brand::all();
+        $categories    = Category::all();
+        $subcategories = Sub_Category::all();
+        $products      = Product::where('status', 1)->paginate(15);
+        return view('frontend.pages.shop_page', compact('products', 'categories', 'subcategories', 'brands'));
     }
 
 }

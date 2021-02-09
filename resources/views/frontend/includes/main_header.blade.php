@@ -30,8 +30,9 @@
                 <div class="header_search">
                     <div class="header_search_content">
                         <div class="header_search_form_container">
-                            <form action="#" class="header_search_form clearfix">
-                                <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                            <form action="{{ route('product.search.result') }}" method="POST" class="header_search_form clearfix">
+                                @csrf
+                                <input type="search" required="required" class="header_search_input" placeholder="Search for products..." onkeyup="productSearch(this)" name="search">
                                 <div class="custom_dropdown">
                                     <div class="custom_dropdown_list">
                                         <span class="custom_dropdown_placeholder clc">All Categories</span>
@@ -39,13 +40,16 @@
                                         <ul class="custom_list clc">
                                             <li><a class="clc" href="#">All Categories</a></li>
                                             @foreach ($categories as $key => $row)
-                                            <li><a class="clc" href="#">{{ $row->category_name }}</a></li>
+                                                <li><a class="clc" href="#">{{ $row->category_name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
                                 </div>
                                 <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('public/frontend/images/search.png') }}" alt=""></button>
                             </form>
+                            <!--- show ajax search resuit -->
+                            <div style="background: #fff; display: none; max-height: 400px; overflow-y: scroll; margin-top: 5px; padding: 1rem 0;" id="show_post"></div>
+                            <!--- show ajax search resuit -->
                         </div>
                     </div>
                 </div>

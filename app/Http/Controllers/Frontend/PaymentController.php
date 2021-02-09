@@ -90,7 +90,7 @@ class PaymentController extends Controller
         $order->payment_amount   = $charge->amount/100;
         $order->blnc_transection = $charge->balance_transaction;
         $order->strip_order_id   = $charge->metadata->order_id;
-        $order->subtotal         = Cart::Subtotal();
+        $order->subtotal         = $request->sub_total;
         $order->shipping         = $request->shipping_charge;
         $order->vat              = $request->vat;
         $order->total            = $request->total;

@@ -41,6 +41,8 @@ Route::resource('coupon', 'Coupon\CouponController');
         // Newslatters =======
 Route::resource('newslatter', 'Newslatter\NewslatterController');
         // Product =======
+//Product Stock
+Route::get('product/stock', 'Product\ProductController@stockProduct')->name('product.stock');
 // Get subcategory by ajax ...
 Route::get('product/subcategory/get', 'product\productController@subCategoryGet')->name('product.sub.get');
 // Product Active ....
@@ -98,6 +100,16 @@ Route::post('create/new/subadmin/store', 'Auth\UserRoleController@Store')->name(
 Route::get('sub/admin/edit/{id}', 'Auth\UserRoleController@userEdit')->name('user.edit');
 Route::PUT('subadmin/update/{id}', 'Auth\UserRoleController@userUpdate')->name('new.user.update');
 Route::delete('subadmin/delete/{id}', 'Auth\UserRoleController@userDestroy')->name('user.destroy');
+        //Contact Message
+Route::get('contact/message/list', 'Message\MessageController@index')->name('contact.message.list');
+Route::get('contact/message/show/{id}', 'Message\MessageController@show')->name('contact.message.show');
+Route::delete('contact/message/destroy/{id}', 'Message\MessageController@destroy')->name('contact.message.destroy');
+        // Comment
+Route::get('product/comment/list', 'Message\MessageController@commentList')->name('product.comment.list');
+Route::get('product/comment/show/{id}', 'Message\MessageController@commentShow')->name('comment.show');
+Route::get('product/comment/inactive/{id}', 'Message\MessageController@commentInactive')->name('comment.inactive');
+Route::get('product/comment/active/{id}', 'Message\MessageController@commentActive')->name('comment.active');
+Route::delete('product/comment/delete/{id}', 'Message\MessageController@commentDestroy')->name('comment.destroy');
 
 });
 
@@ -138,14 +150,20 @@ Route::get('product/subcategory/{id}/{subcatname}','Frontend\ProductController@s
 Route::get('blog/show/all', 'Frontend\BlogController@Blog')->name('all.blog.show');
 Route::get('blog/language/english', 'Frontend\BlogController@BlogEng')->name('language.english');
 Route::get('blog/language/Bangla', 'Frontend\BlogController@BlogBan')->name('language.bangla');
-
         //Return Order
 Route::get('single/order/view/{id}', 'Frontend\OrderController@singleOrder')->name('orders.show.single');
 Route::get('return/order/{id}', 'Frontend\OrderController@returnOrder')->name('this.order.return');
-
         //Comment
 Route::post('/comment/store', 'Frontend\CommentController@store')->name('comment.add');
 Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
 Route::get('/delete/comment/{id}', 'Frontend\CommentController@destroyComment')->name('comment.delete');
+        // Products shop Route.. 
+Route::get('/shop', 'Frontend\ProductController@productShop')->name('product.shop'); //not read
+        // Contact Route..
+Route::get('/contact', 'Frontend\ContactController@contact')->name('user.contact');
+Route::get('/contact/store', 'Frontend\ContactController@contactStore')->name('user.contact.store');
+        // Search
+Route::post('/search/product', 'Frontend\SearchController@productSearch')->name('product.search');
+Route::post('/product/search/resuit', 'Frontend\SearchController@productSearchResuit')->name('product.search.result');
         
 

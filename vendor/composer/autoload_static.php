@@ -623,6 +623,8 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Http\\Controllers\\FrontendController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontendController.php',
         'App\\Http\\Controllers\\Frontend\\AddCartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/AddCartController.php',
         'App\\Http\\Controllers\\Frontend\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/BlogController.php',
+        'App\\Http\\Controllers\\Frontend\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/CommentController.php',
+        'App\\Http\\Controllers\\Frontend\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ContactController.php',
         'App\\Http\\Controllers\\Frontend\\NewsletterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/NewsletterController.php',
         'App\\Http\\Controllers\\Frontend\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/OrderController.php',
         'App\\Http\\Controllers\\Frontend\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/PaymentController.php',

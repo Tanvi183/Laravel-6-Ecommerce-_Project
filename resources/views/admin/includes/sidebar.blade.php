@@ -122,6 +122,20 @@
     @else
     @endif
 
+    @if (Auth::user()->product_stock == 1)
+      <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon fa fa-archive tx-18"></i>
+          <span class="menu-item-label">Stock</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+      </a><!-- sl-menu-link -->
+      <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('admin.product.stock') }}" class="nav-link">Stock Product</a></li>
+      </ul>
+    @else
+    @endif
+
     @if (Auth::user()->user_role == 1)
       <a href="#" class="sl-menu-link">
         <div class="sl-menu-item">
@@ -133,6 +147,34 @@
       <ul class="sl-menu-sub nav flex-column">
         <li class="nav-item"><a href="{{ route('admin.create.new.user') }}" class="nav-link">Add User</a></li>
         <li class="nav-item"><a href="{{ route('admin.user.all.list') }}" class="nav-link">All User</a></li>
+      </ul>
+    @else
+    @endif
+
+    @if (Auth::user()->contact_message == 1)
+      <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon fa fa-inbox tx-18"></i>
+          <span class="menu-item-label">Inbox</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+      </a><!-- sl-menu-link -->
+      <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('admin.contact.message.list') }}" class="nav-link">Contact Message</a></li>
+      </ul>
+    @else
+    @endif
+
+    @if (Auth::user()->contact_message == 1)
+      <a href="#" class="sl-menu-link">
+        <div class="sl-menu-item">
+          <i class="menu-item-icon fa fa-comments tx-18"></i>
+          <span class="menu-item-label">Comments</span>
+          <i class="menu-item-arrow fa fa-angle-down"></i>
+        </div><!-- menu-item -->
+      </a><!-- sl-menu-link -->
+      <ul class="sl-menu-sub nav flex-column">
+        <li class="nav-item"><a href="{{ route('admin.product.comment.list') }}" class="nav-link">Product Comment</a></li>
       </ul>
     @else
     @endif

@@ -6,6 +6,7 @@ use App\model\admin\Brand;
 use App\model\admin\Product;
 use Illuminate\Http\Request;
 use App\model\admin\Category;
+use App\model\Frontend\Comment;
 use App\model\Frontend\Order;
 use phpDocumentor\Reflection\Types\Null_;
 
@@ -43,11 +44,18 @@ class FrontendController extends Controller
         $womans_passion = Product::where('category_id', $womans_id)->where('status', 1)->orderBy('id', 'desc')->get();
         // Brand Logo Show
         $brandlogo = Brand::all();
+        // Hot new Product.. 
+        $hot_new = Product::where('hot_new', 1)->where('status', 1)->orderBy('id', 'DESC')->take(3)->get();
         //Bye One Get One
         $ByeGet         = Product::where('bye_one_get_one', 1)->where('status', 1)->orderBy('id', 'desc')->limit(24)->get();
+        // Random products
+        $random_products = Product::where('status', 1)->inRandomOrder()->limit(10)->get();
+        // Review Product
+        $reviewProduct = Comment::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         
         return view('frontend.pages.index',compact('main_slide', 'hot_deal', 'featured', 'trends', 'best_rated',
-            'category', 'mid_slider', 'discout_product', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet'
+            'category', 'mid_slider', 'discout_product', 'electronic', 'mans_passion', 'womans_passion', 'brandlogo', 'ByeGet',
+            'random_products', 'hot_new', 'reviewProduct'
         ));
     }
 

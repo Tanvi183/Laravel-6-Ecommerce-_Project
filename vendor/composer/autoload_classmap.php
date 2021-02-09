@@ -37,6 +37,8 @@ return array(
     'App\\Http\\Controllers\\FrontendController' => $baseDir . '/app/Http/Controllers/FrontendController.php',
     'App\\Http\\Controllers\\Frontend\\AddCartController' => $baseDir . '/app/Http/Controllers/Frontend/AddCartController.php',
     'App\\Http\\Controllers\\Frontend\\BlogController' => $baseDir . '/app/Http/Controllers/Frontend/BlogController.php',
+    'App\\Http\\Controllers\\Frontend\\CommentController' => $baseDir . '/app/Http/Controllers/Frontend/CommentController.php',
+    'App\\Http\\Controllers\\Frontend\\ContactController' => $baseDir . '/app/Http/Controllers/Frontend/ContactController.php',
     'App\\Http\\Controllers\\Frontend\\NewsletterController' => $baseDir . '/app/Http/Controllers/Frontend/NewsletterController.php',
     'App\\Http\\Controllers\\Frontend\\OrderController' => $baseDir . '/app/Http/Controllers/Frontend/OrderController.php',
     'App\\Http\\Controllers\\Frontend\\PaymentController' => $baseDir . '/app/Http/Controllers/Frontend/PaymentController.php',

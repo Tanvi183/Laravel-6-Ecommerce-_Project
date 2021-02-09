@@ -425,4 +425,10 @@ class ProductController extends Controller
         // Redirect.
         return Redirect()->back()->with($notification);
     }
+
+    public function stockProduct()
+    {
+        $products = Product::orderBy('id', 'desc')->get();
+        return view('Admin.stock.product_stock', compact('products'));
+    }
 }

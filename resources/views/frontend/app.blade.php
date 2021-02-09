@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>OneTech</title>
-    <meta name="csrf" value="{{ csrf_token() }}">
+    <meta name="csrf-token" value="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="OneTech shop project">
@@ -158,6 +158,36 @@
                });
            });
    </script>
+
+   <!--- Laravel Ajax Live Search --->
+  <script type="text/javascript">
+    $( document ).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
+    });
+    function productSearch(element){
+      var token =  $("input[name=_token]").val();
+      var datastr = "product_title=" + element.value + "&token=" + token; 
+        if (element.value != '') { 
+            $.ajax({
+                type: "POST",
+                url: "{{ route('product.search') }}",
+                data: datastr,
+                success: function( msg ) {
+                    $("#show_post").show();
+                    $('#show_post').html(msg);
+                    console.log(msg);
+                }
+            });
+        }else {
+            $('#show_post').hide();
+        }
+    }
+
+  </script>
 
 </body>
 </html>

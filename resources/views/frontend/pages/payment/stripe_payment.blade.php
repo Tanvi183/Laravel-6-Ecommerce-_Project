@@ -167,7 +167,7 @@
                             <!-- Used to display form errors. -->
 							<div id="card-errors" role="alert"></div>
 
-							{{-- <input type="hidden" value="{{ Cart::Subtotal() }}" name="sub_total"> --}}
+							<input type="hidden" value="{{ Cart::Subtotal() }}" name="sub_total">
 							<!-- Shipping Charge -->
 							@if (Session::has('coupon'))
 								<input type="hidden" value="{{ $coupon/100 * $charge }}" name="shipping_charge">

@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/styles/product_styles.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('/public/frontend/styles/product_responsive.css') }}">
+	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=601cd94a9afb3500116211d7&product=inline-share-buttons" async="async"></script>
 @endpush
 
 	<!-- Single Product -->
@@ -98,11 +99,12 @@
 									@else
 										<div class="product_price text-danger">Price: $ {{ $product->discount_price }}</div>
 									@endif
-								<input type="hidden" name="product_id" value="{{ $product->id }}">
+									<input type="hidden" name="product_id" value="{{ $product->id }}">
 									<div class="button_container">
 										<button type="submit" class="button cart_button">Add to Cart</button>
-									<div class="product_fav"><i class="fas fa-heart"></i></div>
-								</div>
+									{{-- <div class="product_fav"><i class="fas fa-heart"></i></div><br><br> --}}
+								</div><br><br>
+								<div class="sharethis-inline-share-buttons" style="float: left;"></div>
 							</form>
 
 						</div>
