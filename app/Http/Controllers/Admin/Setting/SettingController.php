@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
+use File;
 use App\model\admin\Seo;
+use App\model\admin\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\model\admin\Setting;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -56,6 +59,7 @@ class SettingController extends Controller
         return view('admin.settings.seo', compact('seo'));
     }
     
+    // Seo Update
     public function seoUpdate(Request $request)
     {
         // validatin
@@ -83,4 +87,43 @@ class SettingController extends Controller
         // Redirect
         return redirect()->route('admin.settings.index')->with($notification);
     }
+
+    // Database Backup
+    public function databaseIndex()
+    {
+        $files = File::allFiles('storage/app/Laravel');
+        return view('admin.settings.db_backup', compact('files'));
+    }
+
+    // Backup Now
+    public function backupNow()
+    {
+        Artisan::call('backup:run');
+       // Notification...
+       $notification=array(
+        'messege'=>'Database Backup Successfuly',
+        'alert-type'=>'success'
+        );
+        // Redirect
+        return redirect()->back()->with($notification);
+    }
+
+    // Database Download
+    public function DownloadDatabase($getFilename)
+    {
+        $path = storage_path('app\Laravel/'.$getFilename);
+        return response()->download($path);
+    }
+
+    // Backup Database Delete
+    public function DeleteDatabase($getFilename)
+    {
+       Storage::delete('Laravel/'.$getFilename);
+       $notification=array(
+            'messege'=>'Successfully Backup Delete  ',
+            'alert-type'=>'success'
+        );    
+        return redirect()->back()->with($notification);
+    }
+    
 }

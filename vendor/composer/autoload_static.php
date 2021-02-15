@@ -52,6 +52,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        '0c3c22e27afa83be19b4c938f4c6e9ea' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -103,7 +104,9 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Stripe\\' => 7,
-            'Spatie\\Honeypot\\' => 16,
+            'Spatie\\TemporaryDirectory\\' => 26,
+            'Spatie\\DbDumper\\' => 16,
+            'Spatie\\Backup\\' => 14,
         ),
         'R' => 
         array (
@@ -143,7 +146,6 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
             'League\\Event\\' => 13,
             'League\\CommonMark\\' => 18,
             'Lcobucci\\JWT\\' => 13,
-            'Laravelista\\Comments\\' => 21,
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\Socialite\\' => 18,
@@ -344,9 +346,17 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
-        'Spatie\\Honeypot\\' => 
+        'Spatie\\TemporaryDirectory\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-honeypot/src',
+            0 => __DIR__ . '/..' . '/spatie/temporary-directory/src',
+        ),
+        'Spatie\\DbDumper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/db-dumper/src',
+        ),
+        'Spatie\\Backup\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-backup/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -433,10 +443,6 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
-        'Laravelista\\Comments\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laravelista/comments/src',
-        ),
         'Laravel\\Ui\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/src',
@@ -463,11 +469,11 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
-            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
+            0 => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src',
         ),
         'JakubOnderka\\PhpConsoleColor\\' => 
         array (
-            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
+            0 => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src',
         ),
         'Intervention\\Image\\' => 
         array (
@@ -564,13 +570,6 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
     );
 
     public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'Parsedown' => 
-            array (
-                0 => __DIR__ . '/..' . '/erusev/parsedown',
-            ),
-        ),
         'M' => 
         array (
             'Mockery' => 
@@ -607,6 +606,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Http\\Controllers\\Admin\\Brand\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Brand/BrandController.php',
         'App\\Http\\Controllers\\Admin\\Category\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Category/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\Coupon\\CouponController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Coupon/CouponController.php',
+        'App\\Http\\Controllers\\Admin\\Message\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Message/MessageController.php',
         'App\\Http\\Controllers\\Admin\\Newslatter\\NewslatterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Newslatter/NewslatterController.php',
         'App\\Http\\Controllers\\Admin\\OrderReturn\\ReturnController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OrderReturn/ReturnController.php',
         'App\\Http\\Controllers\\Admin\\Order\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Order/OrderController.php',
@@ -629,6 +629,7 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'App\\Http\\Controllers\\Frontend\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/OrderController.php',
         'App\\Http\\Controllers\\Frontend\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/PaymentController.php',
         'App\\Http\\Controllers\\Frontend\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ProductController.php',
+        'App\\Http\\Controllers\\Frontend\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/SearchController.php',
         'App\\Http\\Controllers\\Frontend\\WishlistController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/WishlistController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -2661,9 +2662,9 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'Intervention\\Image\\Point' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Point.php',
         'Intervention\\Image\\Response' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Response.php',
         'Intervention\\Image\\Size' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Size.php',
-        'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
-        'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
-        'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
+        'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src/ConsoleColor.php',
+        'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src/InvalidStyleException.php',
+        'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src/Highlighter.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Laminas\\Diactoros\\AbstractSerializer' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/AbstractSerializer.php',
         'Laminas\\Diactoros\\CallbackStream' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/CallbackStream.php',
@@ -2810,16 +2811,6 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
-        'Laravelista\\Comments\\Comment' => __DIR__ . '/..' . '/laravelista/comments/src/Comment.php',
-        'Laravelista\\Comments\\CommentController' => __DIR__ . '/..' . '/laravelista/comments/src/CommentController.php',
-        'Laravelista\\Comments\\CommentControllerInterface' => __DIR__ . '/..' . '/laravelista/comments/src/CommentControllerInterface.php',
-        'Laravelista\\Comments\\CommentPolicy' => __DIR__ . '/..' . '/laravelista/comments/src/CommentPolicy.php',
-        'Laravelista\\Comments\\Commentable' => __DIR__ . '/..' . '/laravelista/comments/src/Commentable.php',
-        'Laravelista\\Comments\\Commenter' => __DIR__ . '/..' . '/laravelista/comments/src/Commenter.php',
-        'Laravelista\\Comments\\Events\\CommentCreated' => __DIR__ . '/..' . '/laravelista/comments/src/Events/CommentCreated.php',
-        'Laravelista\\Comments\\Events\\CommentDeleted' => __DIR__ . '/..' . '/laravelista/comments/src/Events/CommentDeleted.php',
-        'Laravelista\\Comments\\Events\\CommentUpdated' => __DIR__ . '/..' . '/laravelista/comments/src/Events/CommentUpdated.php',
-        'Laravelista\\Comments\\ServiceProvider' => __DIR__ . '/..' . '/laravelista/comments/src/ServiceProvider.php',
         'Lcobucci\\JWT\\Builder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Builder.php',
         'Lcobucci\\JWT\\Claim' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim.php',
         'Lcobucci\\JWT\\Claim\\Basic' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Basic.php',
@@ -3868,7 +3859,6 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
@@ -4602,13 +4592,73 @@ class ComposerStaticInite3bae772c4b322f01cd1c02f89ef47e9
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'Spatie\\Honeypot\\EncryptedTime' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/EncryptedTime.php',
-        'Spatie\\Honeypot\\HoneypotServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/HoneypotServiceProvider.php',
-        'Spatie\\Honeypot\\HoneypotViewComposer' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/HoneypotViewComposer.php',
-        'Spatie\\Honeypot\\ProtectAgainstSpam' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/ProtectAgainstSpam.php',
-        'Spatie\\Honeypot\\SpamDetected' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/SpamDetected.php',
-        'Spatie\\Honeypot\\SpamResponder\\BlankPageResponder' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/SpamResponder/BlankPageResponder.php',
-        'Spatie\\Honeypot\\SpamResponder\\SpamResponder' => __DIR__ . '/..' . '/spatie/laravel-honeypot/src/SpamResponder/SpamResponder.php',
+        'SiteSettingsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SiteSettingsTableSeeder.php',
+        'Spatie\\Backup\\BackupDestination\\Backup' => __DIR__ . '/..' . '/spatie/laravel-backup/src/BackupDestination/Backup.php',
+        'Spatie\\Backup\\BackupDestination\\BackupCollection' => __DIR__ . '/..' . '/spatie/laravel-backup/src/BackupDestination/BackupCollection.php',
+        'Spatie\\Backup\\BackupDestination\\BackupDestination' => __DIR__ . '/..' . '/spatie/laravel-backup/src/BackupDestination/BackupDestination.php',
+        'Spatie\\Backup\\BackupDestination\\BackupDestinationFactory' => __DIR__ . '/..' . '/spatie/laravel-backup/src/BackupDestination/BackupDestinationFactory.php',
+        'Spatie\\Backup\\BackupServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-backup/src/BackupServiceProvider.php',
+        'Spatie\\Backup\\Commands\\BackupCommand' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Commands/BackupCommand.php',
+        'Spatie\\Backup\\Commands\\BaseCommand' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Commands/BaseCommand.php',
+        'Spatie\\Backup\\Commands\\CleanupCommand' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Commands/CleanupCommand.php',
+        'Spatie\\Backup\\Commands\\ListCommand' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Commands/ListCommand.php',
+        'Spatie\\Backup\\Commands\\MonitorCommand' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Commands/MonitorCommand.php',
+        'Spatie\\Backup\\Events\\BackupHasFailed' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/BackupHasFailed.php',
+        'Spatie\\Backup\\Events\\BackupManifestWasCreated' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/BackupManifestWasCreated.php',
+        'Spatie\\Backup\\Events\\BackupWasSuccessful' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/BackupWasSuccessful.php',
+        'Spatie\\Backup\\Events\\BackupZipWasCreated' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/BackupZipWasCreated.php',
+        'Spatie\\Backup\\Events\\CleanupHasFailed' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/CleanupHasFailed.php',
+        'Spatie\\Backup\\Events\\CleanupWasSuccessful' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/CleanupWasSuccessful.php',
+        'Spatie\\Backup\\Events\\HealthyBackupWasFound' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/HealthyBackupWasFound.php',
+        'Spatie\\Backup\\Events\\UnhealthyBackupWasFound' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Events/UnhealthyBackupWasFound.php',
+        'Spatie\\Backup\\Exceptions\\CannotCreateDbDumper' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/CannotCreateDbDumper.php',
+        'Spatie\\Backup\\Exceptions\\InvalidBackupDestination' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/InvalidBackupDestination.php',
+        'Spatie\\Backup\\Exceptions\\InvalidBackupJob' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/InvalidBackupJob.php',
+        'Spatie\\Backup\\Exceptions\\InvalidCommand' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/InvalidCommand.php',
+        'Spatie\\Backup\\Exceptions\\InvalidConfiguration' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/InvalidConfiguration.php',
+        'Spatie\\Backup\\Exceptions\\InvalidHealthCheck' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/InvalidHealthCheck.php',
+        'Spatie\\Backup\\Exceptions\\NotificationCouldNotBeSent' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Exceptions/NotificationCouldNotBeSent.php',
+        'Spatie\\Backup\\Helpers\\ConsoleOutput' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Helpers/ConsoleOutput.php',
+        'Spatie\\Backup\\Helpers\\File' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Helpers/File.php',
+        'Spatie\\Backup\\Helpers\\Format' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Helpers/Format.php',
+        'Spatie\\Backup\\Helpers\\RightAlignedTableStyle' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Helpers/RightAlignedTableStyle.php',
+        'Spatie\\Backup\\Notifications\\BaseNotification' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/BaseNotification.php',
+        'Spatie\\Backup\\Notifications\\EventHandler' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/EventHandler.php',
+        'Spatie\\Backup\\Notifications\\Notifiable' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifiable.php',
+        'Spatie\\Backup\\Notifications\\Notifications\\BackupHasFailed' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifications/BackupHasFailed.php',
+        'Spatie\\Backup\\Notifications\\Notifications\\BackupWasSuccessful' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifications/BackupWasSuccessful.php',
+        'Spatie\\Backup\\Notifications\\Notifications\\CleanupHasFailed' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifications/CleanupHasFailed.php',
+        'Spatie\\Backup\\Notifications\\Notifications\\CleanupWasSuccessful' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifications/CleanupWasSuccessful.php',
+        'Spatie\\Backup\\Notifications\\Notifications\\HealthyBackupWasFound' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifications/HealthyBackupWasFound.php',
+        'Spatie\\Backup\\Notifications\\Notifications\\UnhealthyBackupWasFound' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Notifications/Notifications/UnhealthyBackupWasFound.php',
+        'Spatie\\Backup\\Tasks\\Backup\\BackupJob' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Backup/BackupJob.php',
+        'Spatie\\Backup\\Tasks\\Backup\\BackupJobFactory' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Backup/BackupJobFactory.php',
+        'Spatie\\Backup\\Tasks\\Backup\\DbDumperFactory' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Backup/DbDumperFactory.php',
+        'Spatie\\Backup\\Tasks\\Backup\\FileSelection' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Backup/FileSelection.php',
+        'Spatie\\Backup\\Tasks\\Backup\\Manifest' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Backup/Manifest.php',
+        'Spatie\\Backup\\Tasks\\Backup\\Zip' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Backup/Zip.php',
+        'Spatie\\Backup\\Tasks\\Cleanup\\CleanupJob' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Cleanup/CleanupJob.php',
+        'Spatie\\Backup\\Tasks\\Cleanup\\CleanupStrategy' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Cleanup/CleanupStrategy.php',
+        'Spatie\\Backup\\Tasks\\Cleanup\\Period' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Cleanup/Period.php',
+        'Spatie\\Backup\\Tasks\\Cleanup\\Strategies\\DefaultStrategy' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Cleanup/Strategies/DefaultStrategy.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\BackupDestinationStatus' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/BackupDestinationStatus.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\BackupDestinationStatusFactory' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/BackupDestinationStatusFactory.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\HealthCheck' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/HealthCheck.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\HealthCheckFailure' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/HealthCheckFailure.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\HealthChecks\\IsReachable' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/HealthChecks/IsReachable.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\HealthChecks\\MaximumAgeInDays' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/HealthChecks/MaximumAgeInDays.php',
+        'Spatie\\Backup\\Tasks\\Monitor\\HealthChecks\\MaximumStorageInMegabytes' => __DIR__ . '/..' . '/spatie/laravel-backup/src/Tasks/Monitor/HealthChecks/MaximumStorageInMegabytes.php',
+        'Spatie\\DbDumper\\Compressors\\Compressor' => __DIR__ . '/..' . '/spatie/db-dumper/src/Compressors/Compressor.php',
+        'Spatie\\DbDumper\\Compressors\\GzipCompressor' => __DIR__ . '/..' . '/spatie/db-dumper/src/Compressors/GzipCompressor.php',
+        'Spatie\\DbDumper\\Databases\\MongoDb' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/MongoDb.php',
+        'Spatie\\DbDumper\\Databases\\MySql' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/MySql.php',
+        'Spatie\\DbDumper\\Databases\\PostgreSql' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/PostgreSql.php',
+        'Spatie\\DbDumper\\Databases\\Sqlite' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/Sqlite.php',
+        'Spatie\\DbDumper\\DbDumper' => __DIR__ . '/..' . '/spatie/db-dumper/src/DbDumper.php',
+        'Spatie\\DbDumper\\Exceptions\\CannotSetParameter' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/CannotSetParameter.php',
+        'Spatie\\DbDumper\\Exceptions\\CannotStartDump' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/CannotStartDump.php',
+        'Spatie\\DbDumper\\Exceptions\\DumpFailed' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/DumpFailed.php',
+        'Spatie\\TemporaryDirectory\\TemporaryDirectory' => __DIR__ . '/..' . '/spatie/temporary-directory/src/TemporaryDirectory.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Stripe\\Account' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Account.php',
         'Stripe\\AccountLink' => __DIR__ . '/..' . '/stripe/stripe-php/lib/AccountLink.php',

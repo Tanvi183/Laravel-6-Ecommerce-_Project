@@ -12,6 +12,10 @@ use Response;
 
 class WishlistController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 	public function wishlist(Request $request)
 	{
@@ -50,6 +54,18 @@ class WishlistController extends Controller
                           ->where('wishlists.user_id',$userid)
                           ->get();
         return view('frontend.pages.wishlist_show',compact('wishlist'));             
+    }
+
+	public function destroy($id)
+    {
+        $comment = Wishlist::find($id);
+        $comment->delete();
+        // Notification...
+        $notification=array(
+            'messege'=>'Your Comment Delete Successfully!',
+            'alert-type'=>'success'
+        );
+        return back()->with($notification);
     }
 
 }

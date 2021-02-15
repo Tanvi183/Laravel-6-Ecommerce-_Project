@@ -19,79 +19,109 @@ class Sub__categoriesSeeder extends Seeder
 
                 [
                     'category_id'      => 1,
-                    'subcategory_name' => 'Shirt & T-shirt',
-                    'subcategory_slug' => 'Shirt & T-shirt',
+                    'subcategory_name' => 'Smartphones',
+                    'subcategory_slug' => 'Smartphones',
                 ],
                 [
                     'category_id'      => 1,
-                    'subcategory_name' => 'Panjabi',
-                    'subcategory_slug' => 'Panjabi',
+                    'subcategory_name' => 'Feature Phone',
+                    'subcategory_slug' => 'Feature Phone',
                 ],
                 [
                     'category_id'      => 1,
-                    'subcategory_name' => 'Shoes',
-                    'subcategory_slug' => 'Shoes',
+                    'subcategory_name' => 'Tablets',
+                    'subcategory_slug' => 'Tablets',
                 ],
                 [
                     'category_id'      => 1,
-                    'subcategory_name' => 'Jacket',
-                    'subcategory_slug' => 'Jacket',
-                ],
-                [
-                    'category_id'      => 2,
-                    'subcategory_name' => 'Saree',
-                    'subcategory_slug' => 'Saree',
-                ],
-                [
-                    'category_id'      => 2,
-                    'subcategory_name' => 'Three-Peace',
-                    'subcategory_slug' => 'Three-Peace',
-                ],
-                [
-                    'category_id'      => 2,
-                    'subcategory_name' => 'Kurtis',
-                    'subcategory_slug' => 'Kurtis',
-                ],
-                [
-                    'category_id'      => 2,
-                    'subcategory_name' => 'Shoes',
-                    'subcategory_slug' => 'Shoes',
-                ],
-                [
-                    'category_id'      => 4,
-                    'subcategory_name' => "Man's Watch",
-                    'subcategory_slug' => "Man's Watch",
-                ],
-                [
-                    'category_id'      => 4,
-                    'subcategory_name' => 'Woman Watch',
-                    'subcategory_slug' => 'Woman Watch',
-                ],
-                [
-                    'category_id'      => 6,
-                    'subcategory_name' => 'Phone',
-                    'subcategory_slug' => 'Phone',
-                ],
-                [
-                    'category_id'      => 6,
                     'subcategory_name' => 'Laptops',
                     'subcategory_slug' => 'Laptops',
                 ],
                 [
-                    'category_id'      => 6,
-                    'subcategory_name' => 'Desktop',
-                    'subcategory_slug' => 'Desktop',
+                    'category_id'      => 1,
+                    'subcategory_name' => 'Desktops',
+                    'subcategory_slug' => 'Desktops',
                 ],
                 [
-                    'category_id'      => 6,
-                    'subcategory_name' => 'Tv',
-                    'subcategory_slug' => 'Tv',
+                    'category_id'      => 1,
+                    'subcategory_name' => 'Gaming Consoles',
+                    'subcategory_slug' => 'Gaming Consoles',
                 ],
                 [
-                    'category_id'      => 6,
-                    'subcategory_name' => 'Refrigerator',
-                    'subcategory_slug' => 'Refrigerator',
-                ]
+                    'category_id'      => 1,
+                    'subcategory_name' => 'Cameras',
+                    'subcategory_slug' => 'Cameras',
+                ],
+                [
+                    'category_id'      => 1,
+                    'subcategory_name' => 'Security Cameras',
+                    'subcategory_slug' => 'Security Cameras',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => "Mobile Accessories",
+                    'subcategory_slug' => "Mobile Accessories",
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Audio',
+                    'subcategory_slug' => 'Audio',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Wearable',
+                    'subcategory_slug' => 'Wearable',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Camera Accessories',
+                    'subcategory_slug' => 'Camera Accessories',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Computer Accessories',
+                    'subcategory_slug' => 'Computer Accessories',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Storage',
+                    'subcategory_slug' => 'Storage',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Printers',
+                    'subcategory_slug' => 'Printers',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Computer Components',
+                    'subcategory_slug' => 'Computer Components',
+                ],
+                [
+                    'category_id'      => 2,
+                    'subcategory_name' => 'Software',
+                    'subcategory_slug' => 'Software',
+                ],
+                [
+                    'category_id'      => 3,
+                    'subcategory_name' => 'Televisions',
+                    'subcategory_slug' => 'Televisions',
+                ],
+                [
+                    'category_id'      => 3,
+                    'subcategory_name' => 'Cooling & Heating',
+                    'subcategory_slug' => 'Cooling & Heating',
+                ],
+                [
+                    'category_id'      => 3,
+                    'subcategory_name' => 'Irons & Garment Steamers',
+                    'subcategory_slug' => 'Irons & Garment Steamers',
+                ],
+                [
+                    'category_id'      => 3,
+                    'subcategory_name' => 'Water Purifiers & Filters',
+                    'subcategory_slug' => 'Water Purifiers & Filters',
+                ],
 
             ]);
 

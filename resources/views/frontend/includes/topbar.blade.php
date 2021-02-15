@@ -1,5 +1,5 @@
 @php
-    $Setting = App\model\admin\Setting::select('phone','email')->first();
+    $Setting = App\model\admin\Setting::select('phone1', 'email')->first();
 @endphp
 
 <div class="top_bar">
@@ -7,14 +7,14 @@
         <div class="row">
             <div class="col d-flex flex-row">
                 <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png') }}" alt=""></div>
-                    @if ($Setting->phone)
+                    @if (isset($Setting->phone))
                         {{ $Setting->phone }}
                     @else
                         +88 018 378 89646
                     @endif
                 </div>
                 <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png') }}" alt=""></div>
-                    @if ($Setting->email)
+                    @if (isset($Setting->email))
                         {{ $Setting->email }}
                     @else
                         mneshat7@gmail.com
@@ -30,9 +30,6 @@
                                 @else
                                     <a href="{{ route('language.bangla') }}">Bangla<i class="fas fa-chevron-down"></i></a>
                                 @endif
-                            </li>
-                            <li>
-                                <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
                             </li>
                         </ul>
                     </div>

@@ -2,8 +2,8 @@
 
 namespace App\model\Frontend;
 
-use App\model\admin\Product;
 use App\User;
+use App\model\admin\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model

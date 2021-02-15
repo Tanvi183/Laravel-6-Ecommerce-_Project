@@ -49,7 +49,8 @@
 						<div class="product_name">{{ $product->product_name }}</div>
 						{{-- <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div> --}}
 						<div class="product_text"><p>
-							{!! Illuminate\Support\Str::limit($product->product_details, 20) !!}
+							{{-- {!! Illuminate\Support\Str::limit($product->product_details, 20) !!} --}}
+							Product Code :  {{ $product->product_code }}
 						</p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="{{ route('add.to.cart') }}" method="POST">

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Frontend;
 use Auth;
 use Cart;
 use Session;
+use App\Mail\invoiceMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\model\Frontend\Order;
 use App\model\Frontend\Shipping;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\model\Frontend\Order_Details;
 
 class PaymentController extends Controller
@@ -108,7 +110,7 @@ class PaymentController extends Controller
                 $shipping->ship_name        = $request->ship_name;
                 $shipping->ship_email       = $request->ship_email;
                 $shipping->ship_phone       = $request->ship_phone;
-                $shipping->ship_address     =$request->ship_address;
+                $shipping->ship_address     = $request->ship_address;
                 $shipping->ship_city        = $request->ship_city;
                 $shipping->ship_post_code   = $request->ship_post_code;
                 $shipping->save();
@@ -128,6 +130,9 @@ class PaymentController extends Controller
                 }
             }
         });
+
+        //mail send to user
+        Mail::to($request->ship_email)->send(new invoiceMail($order));
 
         // Forget Existing Data..
         Cart::destroy();

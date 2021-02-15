@@ -10,6 +10,6 @@ class Contact_Message extends Model
         'name',
         'email',
         'phone',
-        'message'
+        'message',
     ];
 }

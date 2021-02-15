@@ -10,10 +10,8 @@
             <div class="col-lg-2 col-sm-3 col-3 order-1">
                 <div class="logo_container">
                     <div class="logo"><a href="{{ url('/') }}">
-                        @if ($Setting->logo)
-                            {{ $Setting->logo }}
-                        @elseif($Setting->shop_name)
-                            {{ $Setting->shop_name }}
+                        @if(isset($Setting->logo)) {{ $Setting->logo }}
+                        @elseif(isset($Setting->shop_name)) {{ $Setting->shop_name }}
                         @else
                             @if (Session::get('language') == 'bangla')
                                 ওয়ানটেক

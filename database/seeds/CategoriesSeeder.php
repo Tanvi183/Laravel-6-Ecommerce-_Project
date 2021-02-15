@@ -18,36 +18,52 @@ class CategoriesSeeder extends Seeder
             DB::table('categories')->insert([
 
                 [
-                    'category_name'  => "Men's Fashion",
-                    'category_slug' => "Men's Fashion",
+                    'category_name'  => "Electronic Devices",
+                    'category_slug' => "Electronic Devices",
+                ],
+                [
+                    'category_name'  => "Electronic Accessories",
+                    'category_slug' => "Electronic Accessories",
+                ],
+                [
+                    'category_name'  => "TV & Home Appliances",
+                    'category_slug' => "TV & Home Appliances",
+                ],
+                [
+                    'category_name'  => 'Health & Beauty',
+                    'category_slug' => 'Health & Beauty',
+                ],
+                [
+                    'category_name'  => 'Babies & Toys',
+                    'category_slug' => 'Babies & Toys',
+                ],
+                [
+                    'category_name'  => 'Groceries & Pets',
+                    'category_slug' => 'Groceries & Pets',
+                ],
+                [
+                    'category_name'  => "Home & Lifestyle",
+                    'category_slug' => "Home & Lifestyle",
                 ],
                 [
                     'category_name'  => "Women's Fashion",
                     'category_slug' => "Women's Fashion",
                 ],
                 [
-                    'category_name'  => "Child's",
-                    'category_slug' => "Child's",
+                    'category_name'  => "Men's Fashion",
+                    'category_slug' => "Men's Fashion",
                 ],
                 [
-                    'category_name'  => 'Watch',
-                    'category_slug' => 'Watch',
+                    'category_name'  => "Watches & Accessories",
+                    'category_slug' => "Watches & Accessories",
                 ],
                 [
-                    'category_name'  => 'Furniture',
-                    'category_slug' => 'Furniture',
+                    'category_name'  => "Sports & Outdoor",
+                    'category_slug' => "Sports & Outdoor",
                 ],
                 [
-                    'category_name'  => 'Electronics',
-                    'category_slug' => 'Electronics',
-                ],
-                [
-                    'category_name'  => "Health's",
-                    'category_slug' => "Health's",
-                ],
-                [
-                    'category_name'  => "Sport's And Outdoor",
-                    'category_slug' => "Sport's And Outdoor",
+                    'category_name'  => "Automotive & Motorbike",
+                    'category_slug' => "Automotive & Motorbike",
                 ]
 
             ]);

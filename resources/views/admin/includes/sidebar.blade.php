@@ -189,6 +189,7 @@
     <ul class="sl-menu-sub nav flex-column">
       <li class="nav-item"><a href="{{ route('admin.site.setting.index') }}" class="nav-link">Site Settings</a></li>
       <li class="nav-item"><a href="{{ route('admin.seo.index') }}" class="nav-link">Seo Settings</a></li>
+      <li class="nav-item"><a href="{{ route('admin.databasebackup.index') }}" class="nav-link">Database Backup</a></li>
     </ul>
 
     @if (Auth::user()->other == 1)

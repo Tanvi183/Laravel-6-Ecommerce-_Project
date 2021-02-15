@@ -81,6 +81,11 @@ Route::get('site/settings/index', 'Setting\SettingController@siteSetting')->name
 Route::PUT('site/settings/update', 'Setting\SettingController@siteSettingUpdate')->name('site.setting.update');
 Route::get('seo/settings', 'Setting\SettingController@seoEdit')->name('seo.index');
 Route::post('seo/settings/update', 'Setting\SettingController@seoUpdate')->name('seo.update');
+        // Database backup
+Route::get('database/backup/list', 'Setting\SettingController@databaseIndex')->name('databasebackup.index');
+Route::get('database/backup/now', 'Setting\SettingController@backupNow')->name('database.backup.now');
+Route::get('download/database/{getFilename}', 'Setting\SettingController@DownloadDatabase')->name('database.download');
+Route::get('delete/database/{getFilename}', 'Setting\SettingController@DeleteDatabase')->name('database.delete');
         //Order Reports
 Route::get('today/order/report', 'Report\ReportController@todayOrder')->name('report.today.order');
 Route::get('today/delivery/report', 'Report\ReportController@todayDelivery')->name('report.today.delivery');
@@ -124,7 +129,7 @@ Route::post('newsletter', 'Frontend\NewsletterController@store')->name('store.ne
         // Wishlist
 Route::get('/wishlist', 'Frontend\wishlistController@wishlist')->name('customer.wishlist');
 Route::get('show/wishlist/list', 'Frontend\WishlistController@showWishlist')->name('user.wishlist');
-
+Route::DELETE('/wishlist/delete/{id}', 'Frontend\WishlistController@destroy')->name('user.wishlist.destroy');
         // Add To Cart Route Here...
 Route::get('add/to/card/{id}', 'Frontend\AddCartController@addtoCart'); //Ajax
 Route::post('add/cart/product', 'Frontend\AddCartController@addCart')->name('add.to.cart'); //Page Load
